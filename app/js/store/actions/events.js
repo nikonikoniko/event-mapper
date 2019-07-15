@@ -1,13 +1,17 @@
-import {isEqual, isEmpty} from 'lodash/fp';
+import {
+  isEqual, isEmpty, curry
+} from 'lodash/fp';
 
 import {store} from './index';
 
 import api from '../../api';
 
+const action = curry((name, payload) => ({type: name, payload}));
 
-const eventsLoading = received => ({type: 'EVENTS_LOADING', received});
-const sendEvents = units => ({type: 'SEND_EVENTS', units});
-
+const eventsLoading = action('EVENTS_LOADING');
+const sendEvents = action('SEND_EVENTS');
+const selectEvent = action('SELECT_EVENT');
+const unsetEvent = action('UNSET_EVENT');
 
 const updateEvents = filters =>
   dispatch => api.post(filters)
@@ -16,10 +20,6 @@ const updateEvents = filters =>
       dispatch(eventsLoading(false));
       return r;
     });
-
-
-const selectEvent = event => ({type: 'SELECT_INCIDENT', event});
-const unsetEvent = () => ({type: 'UNSET_INCIDENT'});
 
 const retrieveEvent = id =>
   dispatch => {

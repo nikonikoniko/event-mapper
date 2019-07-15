@@ -10,14 +10,20 @@ const defaultCollection = {
   ds: [],
 };
 
-const events = (state = defaultCollection, action) => {
-  switch (action.type) {
+const events = (
+  state = defaultCollection,
+  {type, payload}
+) => {
+  switch (type) {
     case 'INITIATE':
       return {};
     case 'SEND_EVENTS':
-      return set('ds', action.units, state);
+      return set('ds', payload, state);
     case 'EVENTS_LOADING':
-      return merge(state, {updating: action.received});
+      return merge(
+        state,
+        {updating: payload}
+      );
     default:
       return state;
   }
@@ -28,17 +34,26 @@ const defaultEvent = {
   id: params.event || '',
   meat: {}};
 
-const event = (state = defaultEvent, action) => {
-  switch (action.type) {
-    case 'SELECT_INCIDENT':
+const event = (
+  state = defaultEvent,
+  {type, payload}
+) => {
+  switch (type) {
+    case 'SELECT_EVENT':
       return merge(state, {
-        id: action.event.event_code,
-        meat: action.event
+        id: payload.event_code,
+        meat: payload.event
       });
-    case 'UNSET_INCIDENT':
-      return merge(defaultEvent, {id: ''});
-    case 'REQUEST_INCIDENT':
-      return merge(state, {updating: action.received});
+    case 'UNSET_EVENT':
+      return merge(
+        defaultEvent,
+        {id: ''}
+      );
+    case 'REQUEST_EVENT':
+      return merge(
+        state,
+        {updating: payload}
+      );
     default:
       return state;
   }

@@ -23,18 +23,20 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  update: (f) => dispatch(updateFilters(f)),
+  update: f => dispatch(updateFilters(f)),
   reset: () => dispatch(resetFilters()),
-  getEvent: (id) => dispatch(retrieveEvent(id)),
-  selectEvent: (u) => dispatch(selectEvent(u)),
+  getEvent: id => dispatch(retrieveEvent(id)),
+  selectEvent: u => dispatch(selectEvent(u)),
   clearEvent: () => dispatch(unsetEvent()),
-  getUnit: (id) => dispatch(retrieveUnit(id)),
+  getUnit: id => dispatch(retrieveUnit(id)),
   clearUnit: () => dispatch(unsetUnit()),
 });
 
-const Collection = withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CollectionComponent));
+const Collection = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CollectionComponent)
+);
 
 export default Collection;

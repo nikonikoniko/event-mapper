@@ -3,17 +3,26 @@ import {
 } from 'lodash/fp';
 
 
-const stats = (state = {}, action) => {
-  switch (action.type) {
+const stats = (
+  state = {},
+  {type, payload}
+) => {
+  switch (type) {
     default:
       return state;
   }
 };
 
-const filters = (state = {}, action) => {
-  switch (action.type) {
+const filters = (
+  state = {},
+  {type, payload}
+) => {
+  switch (type) {
     case 'SEND_FILTERS':
-      return merge(state, {filters: action.filters});
+      return merge(
+        state,
+        {filters: payload}
+      );
     case 'RESET_FILTERS':
       return set('filters', {}, state);
     default:

@@ -1,22 +1,25 @@
 import {
-  isEqual, isEmpty
+  isEqual, isEmpty, curry,
 } from 'lodash/fp';
 
 import api from '../../api';
 
 import {store} from '../index';
 
-const observationsLoading = received => ({type: 'OBSERVATIONS_LOADING', received});
-const sendObservations = units => ({type: 'SEND_OBSERVATIONS', units});
+const action = curry((name, payload) => ({type: name, payload}));
 
-export const selectUnit = unit => ({type: 'SELECT_UNIT', unit});
-export const unsetUnit = () => ({type: 'UNSET_UNIT'});
+const loading = action('OBSERVATIONS_LOADING');
+const send = action('SEND_OBSERVATIONS');
+const select = send('SELECT_OBSERVATION');
+
+const unsetUnit =
+  () => ({type: 'UNSET_UNIT'});
 
 const updateObservations = filters =>
   dispatch => api.post(filters)
     .then(r => {
-      dispatch(sendObservations(r));
-      dispatch(observationsLoading(false));
+      dispatch(send(r));
+      dispatch(loading(false));
       return r;
     });
 
@@ -45,4 +48,5 @@ const retrieveUnit = unitId =>
 
 export {
   updateObservations,
+  unsetUnit,
 }

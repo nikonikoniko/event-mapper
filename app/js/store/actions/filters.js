@@ -1,5 +1,5 @@
 import {
-  merge,
+  merge, curry,
 } from 'lodash/fp';
 
 import api from '../../api';
@@ -15,8 +15,9 @@ import {
 } from './observations';
 import {updateEvents} from './events';
 
+const action = curry((name, payload) => ({type: name, payload}));
 
-const sendFilters = filters => ({type: 'UPDATE_FILTERS', filters});
+const sendFilters = action('UPDATE_FILTERS');
 
 const updateFilters = filters =>
   dispatch => {
