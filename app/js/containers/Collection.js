@@ -4,7 +4,13 @@ import {withRouter} from 'react-router-dom';
 import CollectionComponent from '../components/CollectionComponent';
 
 import {
-  updateFilters, resetFilters, unsetUnit, selectEvent, retrieveEvent, unsetEvent, retrieveUnit
+  updateFilters,
+  resetFilters,
+  unsetUnit,
+  selectEvent,
+  retrieveEvent,
+  unsetEvent,
+  retrieveUnit,
 } from '../store/actions';
 
 const mapStateToProps = (state) => ({
@@ -13,7 +19,7 @@ const mapStateToProps = (state) => ({
   updating: state.events.updating,
   events: state.events.ds,
   selectedEvent: state.event.meat,
-  selectedUnit: state.unit.meat,
+  selectedUnit: state.observation.meat,
 });
 
 const mapDispatchToProps = dispatch => ({
