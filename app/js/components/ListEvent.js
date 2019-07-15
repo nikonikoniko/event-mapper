@@ -14,8 +14,7 @@ export default class ListEvidence extends Component {
       <div // eslint-disable-line
         className={'listevent item'}
         onClick={
-          () => {}
-          // this.props.selector
+          this.props.selector
         }
       >
         <div className="columns">

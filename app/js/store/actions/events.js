@@ -8,16 +8,14 @@ import api from '../../api';
 
 const action = curry((name, payload) => ({type: name, payload}));
 
-const eventsLoading = action('EVENTS_LOADING');
-const sendEvents = action('SEND_EVENTS');
 const selectEvent = action('SELECT_EVENT');
 const unsetEvent = action('UNSET_EVENT');
 
 const updateEvents = filters =>
   dispatch => api.post(filters)
     .then(r => {
-      dispatch(sendEvents(r));
-      dispatch(eventsLoading(false));
+      dispatch(action('SEND_EVENTS', r));
+      dispatch(action('EVENTS_LOADING', false));
       return r;
     });
 
@@ -27,10 +25,7 @@ const retrieveEvent = id =>
     console.log(id);
     // only ping the api if the filters have changed.
     if (!isEqual(id, current.id) || isEmpty(current.meat)) {
-      dispatch({
-        type: 'REQUEST_INCIDENT',
-        received: false,
-      });
+      dispatch(action('REQUEST_INCIDENT', false));
 
       return api.get(`events/${id}`)
         .then(r => {
@@ -48,4 +43,5 @@ export {
   updateEvents,
   unsetEvent,
   retrieveEvent,
+  selectEvent,
 };

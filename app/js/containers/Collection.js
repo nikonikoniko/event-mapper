@@ -22,14 +22,14 @@ const mapStateToProps = (state) => ({
   selectedUnit: state.observation.meat,
 });
 
-const mapDispatchToProps = dispatch => ({
-  update: f => dispatch(updateFilters(f)),
-  reset: () => dispatch(resetFilters()),
-  getEvent: id => dispatch(retrieveEvent(id)),
-  selectEvent: u => dispatch(selectEvent(u)),
-  clearEvent: () => dispatch(unsetEvent()),
-  getUnit: id => dispatch(retrieveUnit(id)),
-  clearUnit: () => dispatch(unsetUnit()),
+const mapDispatchToProps = d => ({
+  update: f => d(updateFilters(f)),
+  reset: () => d(resetFilters()),
+  getEvent: id => d(retrieveEvent(id)),
+  selectEvent: u => d(selectEvent(u)),
+  clearEvent: () => d(unsetEvent()),
+  getUnit: id => d(retrieveUnit(id)),
+  clearUnit: () => d(unsetUnit()),
 });
 
 const Collection = withRouter(

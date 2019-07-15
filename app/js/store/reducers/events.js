@@ -1,9 +1,8 @@
-
-
 import {merge, set} from 'lodash/fp';
 
 import {params} from '../params';
 
+const idField = 'id';
 
 const defaultCollection = {
   updating: true,
@@ -14,6 +13,7 @@ const events = (
   state = defaultCollection,
   {type, payload}
 ) => {
+  console.log('received action', {type, payload});
   switch (type) {
     case 'INITIATE':
       return {};
@@ -38,11 +38,12 @@ const event = (
   state = defaultEvent,
   {type, payload}
 ) => {
+  console.log('received action', {type, payload});
   switch (type) {
     case 'SELECT_EVENT':
       return merge(state, {
-        id: payload.event_code,
-        meat: payload.event
+        id: payload[idField],
+        meat: payload
       });
     case 'UNSET_EVENT':
       return merge(

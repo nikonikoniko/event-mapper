@@ -12,7 +12,7 @@ const loading = action('OBSERVATIONS_LOADING');
 const send = action('SEND_OBSERVATIONS');
 const select = send('SELECT_OBSERVATION');
 
-const unsetUnit =
+const unsetObservation =
   () => ({type: 'UNSET_UNIT'});
 
 const updateObservations = filters =>
@@ -22,6 +22,9 @@ const updateObservations = filters =>
       dispatch(loading(false));
       return r;
     });
+
+const selectObservation = observation =>
+    dispatch => dispatch(select(observation));
 
 const retrieveUnit = unitId =>
   dispatch => {
@@ -36,7 +39,7 @@ const retrieveUnit = unitId =>
       return api.get(`units/${unitId}`)
         .then(r => {
           console.log(r);
-          dispatch(selectUnit(r));
+          dispatch(selectObservation(r));
           dispatch({
             type: 'REQUEST_UNIT',
             received: true,
@@ -48,5 +51,6 @@ const retrieveUnit = unitId =>
 
 export {
   updateObservations,
-  unsetUnit,
-}
+  unsetObservation,
+  selectObservation,
+};
