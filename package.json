@@ -9,8 +9,8 @@
     "dev": "NODE_ENV=development webpack-dev-server --config webpack.config.js --hot",
     "build": "cp index.html dist/ && webpack --config webpack.config.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "niko@niko.io",
+  "license": "GPLv3",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",

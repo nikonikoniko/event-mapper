@@ -4,19 +4,24 @@ import {params} from '../params';
 
 const idField = 'id';
 
-const defaultCollection = {
+const defaultEvents = {
   updating: true,
   ds: [],
 };
 
+const defaultEvent = {
+  updating: true,
+  id: params.event || '',
+  meat: {}
+};
+
+
 const events = (
-  state = defaultCollection,
+  state = defaultEvents,
   {type, payload}
 ) => {
   console.log('received action', {type, payload});
   switch (type) {
-    case 'INITIATE':
-      return {};
     case 'SEND_EVENTS':
       return set('ds', payload, state);
     case 'EVENTS_LOADING':
@@ -29,10 +34,6 @@ const events = (
   }
 };
 
-const defaultEvent = {
-  updating: true,
-  id: params.event || '',
-  meat: {}};
 
 const event = (
   state = defaultEvent,
