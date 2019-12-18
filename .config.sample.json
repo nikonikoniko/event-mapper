@@ -1,10 +1,15 @@
 {
   "events": {
-    "spreadsheet": "1NFJg-zzltsHS0s1nZBBq9riJN0MWra1_lmBwb4V4",
-    "sheet": "Sheet1"
+    "source_type": "google_sheet",
+    "config": {
+      "spreadsheet_id": "1NFJg-zzltsHS0s1nZBYI9riJN0MWra1_lmBwb4V4",
+      "sheet_name": "Sheet1"
+    }
   },
   "observations": {
-    "spreadsheet": "1NFJg-zzltsHS0sBYI6Bq9riJN0MWra1_lmBwb4V4",
-    "sheet": "Sheet2"
+    "source_type": "file_json",
+    "config": {
+      "file_path": "/home/uer/f/code/react-event-mapper/data/testing_observations.json"
+    }
   }
 }

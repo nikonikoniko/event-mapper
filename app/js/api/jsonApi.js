@@ -1,6 +1,6 @@
 import Promise from 'bluebird';
 
-import events from '../../../data/events.json';
+import events from '../../../data/testing_events.json';
 // import units from '../../data/units.json';
 
 

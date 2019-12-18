@@ -33,12 +33,12 @@ module.exports = {
       {
         test: /\.json$/,
         use: ['json-loader'] },
-      { // regular css files
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-          loader: 'css-loader?importLoaders=1',
-        }),
-      },
+      // { // regular css files
+      //   test: /\.css$/,
+      //   loader: ExtractTextPlugin.extract({
+      //     loader: 'css-loader?importLoaders=1',
+      //   }),
+      // },
       {
         test: /\.scss$/,
         exclude: [/node_modules/],

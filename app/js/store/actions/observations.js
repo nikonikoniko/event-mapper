@@ -16,7 +16,7 @@ const unsetObservation =
   () => ({type: 'UNSET_UNIT'});
 
 const updateObservations = filters =>
-  dispatch => api.post(filters)
+  dispatch => api.observations.post(filters)
     .then(r => {
       dispatch(send(r));
       dispatch(loading(false));
@@ -36,7 +36,7 @@ const retrieveUnit = unitId =>
         received: false,
       });
 
-      return api.get(`units/${unitId}`)
+      return api.observations.get(`units/${unitId}`)
         .then(r => {
           console.log(r);
           dispatch(selectObservation(r));

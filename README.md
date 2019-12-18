@@ -22,6 +22,7 @@ change config
 ```javascript
 events.source_type:
                    http_json |
+                   file_json |
                    google_sheet
 events.config.spreadsheet_id: "" // if google_sheet is chosen, the id of the spreadsheet
 events.config.sheet_name: "" // if google_sheet is chosen, the name of the sheet in the spreadsheet
@@ -29,8 +30,9 @@ events.config.json_url // if http_json is chosen, the url where the JSON can be 
 
 observations.source_type:
                     http_json |
+                    file_json |
                     google_sheet |
-                    inline // if the observations are included un the event.observations
+                    inline // todo: if the observations are included un the event.observations
 observations.config.spreadsheet_id: "" // if google_sheet is chosen, the id of the spreadsheet
 observations.config.sheet_name: "" // if google_sheet is chosen, the name of the sheet in the spreadsheet
 observations.config.json_url // if http_json is chosen, the url where the JSON can be requested from

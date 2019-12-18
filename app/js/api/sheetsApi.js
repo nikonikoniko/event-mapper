@@ -4,22 +4,16 @@ import tabletop from './tabletop';
 
 const api = (config) => {
   const {
-    events: {
-      spreadsheet: eventsKey,
-      sheet: eventsSheetName,
-    },
+    spreadsheet_id: eventsKey,
+    sheet_name: eventsSheetName,
   } = config;
 
 
-  const getEvents = () => tabletop(eventsKey).getSheet(eventsSheetName)
+  const getEvents = () => tabletop(eventsKey).getSheet(eventsSheetName);
 
   return {
     get: getEvents,
-    // get: (resource) => {console.log('aaaa'); return Promise.resolve(events); }, // eslint-disable-line
-
     post: getEvents,
-    // post: (...args) => {console.log('aaaa'); return Promise.resolve(events); }, // eslint-disable-line
-
   };
 };
 
