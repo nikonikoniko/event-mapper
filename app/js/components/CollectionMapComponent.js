@@ -8,8 +8,9 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
 import * as L from 'leaflet';
 
 // import Timeline from './CollectionTimelineComponent';
-import {tilesUrl} from '../../../config';
+import config from '../../../config';
 
+const {tilesUrl} = config;
 
 const mapW = map.convert({cap: false});
 

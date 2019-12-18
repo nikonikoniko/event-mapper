@@ -18,6 +18,8 @@ const defaults = {
   }
 };
 
+// TODO: read config from url parameters
+
 const allConfig = mergeAll([
   defaults,
   appConfig,

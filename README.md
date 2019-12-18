@@ -1,4 +1,4 @@
-EventObserver
+## EventObserver
 
 ```
 collection: [event[observation]]
