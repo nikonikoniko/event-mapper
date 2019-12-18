@@ -1,11 +1,11 @@
 import jsonApi from './jsonApi';
 import sheetsApi from './sheetsApi';
 
-import {apiType, apiConfig} from '../../../env';
+import config from '../../../config';
 
 const apis = {
   jsonApi,
   sheetsApi,
 };
 
-export default apis[apiType](apiConfig);
+export default apis['sheetsApi'](config);

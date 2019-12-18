@@ -1,7 +1,5 @@
 import Promise from 'bluebird';
 
-import {databaseApiUrl} from '../../../env';
-
 import events from '../../../data/events.json';
 // import units from '../../data/units.json';
 

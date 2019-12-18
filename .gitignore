@@ -1,4 +1,6 @@
 .env
+.config
+.config.json
 env.js
 
 node_modules

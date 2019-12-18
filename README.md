@@ -20,13 +20,13 @@ localstorage is used to remember a user's filter state and, and query parameters
 change config
 
 ```javascript
-events_source_type: http_json | google_sheet // the type of the source
-events_config.spreadsheet_id: "" // if google_sheet is chosen, the id of the spreadsheet
-events_config.sheet_name: "" // if google_sheet is chosen, the name of the sheet in the spreadsheet
-events_config.json_url // if http_json is chosen, the url where the JSON can be requested from
+events.source_type: http_json | google_sheet // the type of the source
+events.config.spreadsheet_id: "" // if google_sheet is chosen, the id of the spreadsheet
+events.config.sheet_name: "" // if google_sheet is chosen, the name of the sheet in the spreadsheet
+events.config.json_url // if http_json is chosen, the url where the JSON can be requested from
 
-observations_source_type: http_json | google_sheet // the type of the source
-observations_config.spreadsheet_id: "" // if google_sheet is chosen, the id of the spreadsheet
-observations_config.sheet_name: "" // if google_sheet is chosen, the name of the sheet in the spreadsheet
-observations_config.json_url // if http_json is chosen, the url where the JSON can be requested from
+observations.source_type: http_json | google_sheet // the type of the source
+observations.config.spreadsheet_id: "" // if google_sheet is chosen, the id of the spreadsheet
+observations.config.sheet_name: "" // if google_sheet is chosen, the name of the sheet in the spreadsheet
+observations.config.json_url // if http_json is chosen, the url where the JSON can be requested from
 ```
