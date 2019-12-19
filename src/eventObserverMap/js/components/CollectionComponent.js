@@ -2,8 +2,17 @@ import React, { Component } from 'react';
 import {
   map,
   intersectionBy,
-  size, uniqBy, concat, difference, contains,
-  isEmpty, filter, xorBy, sortBy, reverse, first
+  size,
+  uniqBy,
+  concat,
+  difference,
+  contains,
+  isEmpty,
+  filter,
+  xorBy,
+  sortBy,
+  reverse,
+  first,
 } from 'lodash/fp';
 import moment from 'moment';
 
