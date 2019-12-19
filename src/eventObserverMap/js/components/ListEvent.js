@@ -20,7 +20,7 @@ export default class ListEvidence extends Component {
         <div className="columns">
           <div className="col-3 col-sm-12">
             <img
-              src={`assets/img/ProfilePicture-${zeroPad(this.props.num + 1, 3)}.jpg`}
+              src="https://imgplaceholder.com/420x320"
               width="100%"
               height="auto"
               alt=""

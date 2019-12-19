@@ -1,0 +1,15 @@
+{
+  "events": {
+    "source_type": "google_sheet",
+    "config": {
+      "spreadsheet_id": "1NFJg-zzltsHS0s1nZBYI6Bq9riJN0MWra1_lmBwb4V4",
+      "sheet_name": "Sheet1"
+    }
+  },
+  "observations": {
+    "source_type": "file_json",
+    "config": {
+      "file_path": "/home/uer/f/code/react-event-mapper/data/testing_observations.json"
+    }
+  }
+}

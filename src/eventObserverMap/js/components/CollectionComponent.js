@@ -10,7 +10,8 @@ import moment from 'moment';
 import {params} from '../store/params';
 import {timeMeOut} from '../containers/helpers';
 
-import {filters, buttons} from '../../../filters';
+import {filterFunctions, buttons} from '../../../filters';
+
 
 // import Filters from './Filters';
 import ListEvent from './ListEvent';
@@ -142,11 +143,21 @@ export default class Collection extends Component {
     const ks = keys(fs);
     console.log(ks, fs);
 
+    // move this to filters.js as ApplyFilters
     const funcs = map(k => // eslint-disable-line
-      partial(filters[k], [fs[k]])
-  , intersection(ks, keys(filters)));
+      partial(filterFunctions[k], [fs[k]])
+  , intersection(ks, keys(filterFunctions)));
+
+    console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu')
+    console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu')
+    console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu')
+    console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu')
+    console.log(fs)
+    console.log(filterFunctions)
 
     const events = pipe(...funcs)(this.props.events);
+
+    console.log(events);
 
     const locationEvents = filter(i => i.latitude && i.longitude, events);
     const nolocationEvents = filter(i => !i.latitude && !i.longitude, events);

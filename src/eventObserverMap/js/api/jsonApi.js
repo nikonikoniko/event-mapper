@@ -1,14 +1,21 @@
 import Promise from 'bluebird';
 
-import events from '../../../../data/testing_events.json';
-// import units from '../../data/units.json';
+import {
+  zipObjectDeep,
+  keys,
+  values,
+  map,
+} from 'lodash/fp';
 
+import events from '../../../../data/testing_events.json';
+
+const mapExpandedArrays = map(u => zipObjectDeep(keys(u), values(u)));
 
 const api = (config) => {
   console.log('whaaaaaaaaaooooooa', config);
   return {
-    get: (resource) => {console.log('aaaa'); return Promise.resolve(events); }, // eslint-disable-line
-    post: (...args) => {console.log('aaaa'); return Promise.resolve(events); }, // eslint-disable-line
+    get: (resource) => {console.log('aaaa'); return Promise.resolve(mapExpandedArrays(events)); }, // eslint-disable-line
+    post: (...args) => {console.log('aaaa'); return Promise.resolve(mapExpandedArrays(events)); }, // eslint-disable-line
   };
 };
 
