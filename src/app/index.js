@@ -5,5 +5,5 @@ import eventObserverMap from '../eventObserverMap';
 
 render(
   eventObserverMap,
-  document.getElementById('js-root')
+  document.getElementById('eventObserverMap')
 );

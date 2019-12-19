@@ -44,7 +44,7 @@ module.exports = {
         test: /\.scss$/,
         exclude: [/node_modules/],
         loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
-      }
+      },
     ],
   },
   plugins: [
@@ -52,6 +52,7 @@ module.exports = {
       filename: '[name].bundle.css',
       allChunks: true,
     }),
+
     // new UglifyJsPlugin({
     //   test: /\.js($|\?)/i
     // }),

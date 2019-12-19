@@ -26,6 +26,8 @@ $secondary-color: $blue-light;
 @import "../../../node_modules/react-select/dist/react-select.css";
 
 
+.eventObserverMap {
+
 .collection {
   font-family: $font-family;
 
@@ -369,4 +371,5 @@ $secondary-color: $blue-light;
   img{
     visibility:hidden;
   }
+}
 }

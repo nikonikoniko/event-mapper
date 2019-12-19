@@ -11,7 +11,7 @@ import './scss/main.scss';
 export default (
   <Provider store={store}>
     <Router history={history}>
-      <div>
+      <div className="eventObserverMap">
         <Route path="" component={App} />
       </div>
     </Router>
