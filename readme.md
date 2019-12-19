@@ -13,7 +13,7 @@ localstorage is used to remember a user's filter state and, and query parameters
 - dot notation of column names
 - filter on any field
 
-[demo](http://niko.io/projects/eventObserverMap/dist/)
+[demo](http://niko.io/projects/eventObserverMap/_dist/demo.html)
 
 ### todo
 
