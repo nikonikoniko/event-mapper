@@ -5,11 +5,6 @@ env.js
 
 node_modules
 
-dist
-_dist
-assets
-_assets
-
 # Logs
 logs
 *.log

@@ -7,18 +7,19 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 console.log(process.env.NODE_ENV);
 
 module.exports = {
-  context: path.resolve(__dirname, './app'),
+  context: path.resolve(__dirname, './src'),
   entry: {
-    app: './js/app.js',
-    styles: './scss/main.scss'
+    eventObserverMapApp: './app/index.js',
+    eventObserverMap: './eventObserverMap/index.js',
+    // styles: './eventObserverMap/scss/main.scss'
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, './dist/assets'),
-    publicPath: '/assets',                          // New
+    path: path.resolve(__dirname, './_dist'),
+    publicPath: '',                          // New
   },
   devServer: {
-    contentBase: path.resolve(__dirname, './dist'),  // New
+    contentBase: path.resolve(__dirname, './_dist'),  // New
   },
   module: {
     rules: [

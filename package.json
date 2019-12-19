@@ -2,12 +2,12 @@
   "name": "react-event-mapper",
   "version": "0.0.1",
   "description": "Map and filter events by time and date from a json file, google sheets, or an api.  customize the look of events.",
-  "main": "index.js",
+  "main": "_dist/eventObserverMap.js",
   "config": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NODE_ENV=development webpack-dev-server --config webpack.config.js --hot",
-    "build": "cp index.html dist/ && webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js"
   },
   "author": "niko@niko.io",
   "license": "GPLv3",
