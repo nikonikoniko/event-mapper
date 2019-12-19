@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
-  map, pickBy, partial, identity,
-  intersection, keys, pipe, intersectionBy,
+  map,
+  intersectionBy,
   size, uniqBy, concat, difference, contains,
   isEmpty, filter, xorBy, sortBy, reverse, first
 } from 'lodash/fp';
@@ -10,7 +10,7 @@ import moment from 'moment';
 import {params} from '../store/params';
 import {timeMeOut} from '../containers/helpers';
 
-import {filterFunctions, buttons} from '../../../filters';
+import {buttons, applyFilters} from '../../../filters';
 
 
 // import Filters from './Filters';
@@ -135,27 +135,7 @@ export default class Collection extends Component {
     const updating = this.props.updating || this.state.typing;
     const visible = this.state.visibleMarkers;
 
-    // const fils = values(fs);
-    // const applyfilters = pipe(fils[0], fils[1]);
-    // const events = applyfilters(this.props.events);
-
-    const fs = pickBy(identity, this.state.filters);
-    const ks = keys(fs);
-    console.log(ks, fs);
-
-    // move this to filters.js as ApplyFilters
-    const funcs = map(k => // eslint-disable-line
-      partial(filterFunctions[k], [fs[k]])
-  , intersection(ks, keys(filterFunctions)));
-
-    console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu')
-    console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu')
-    console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu')
-    console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu')
-    console.log(fs)
-    console.log(filterFunctions)
-
-    const events = pipe(...funcs)(this.props.events);
+    const events = applyFilters(this.state.filters)(this.props.events);
 
     console.log(events);
 

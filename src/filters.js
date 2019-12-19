@@ -6,6 +6,11 @@ import {
   map,
   pipe,
   mergeAll,
+  curry,
+  partial,
+  keys,
+  identity,
+  pickBy,
 } from 'lodash/fp';
 
 import appConfig from './config';
@@ -15,9 +20,6 @@ const {
     filter_fields: customFilters,
   }
 } = appConfig;
-
-console.log(appConfig);
-console.log(customFilters);
 
 const types = { // depending on the type of filter,
   // take a filter config and return the function to accurately
@@ -33,7 +35,7 @@ const types = { // depending on the type of filter,
 const createFilterFunction = ({key, type, config}) => {
   console.log(key, type, config);
   return ({
-    ['_' + key]: types[type]({key, type, config})
+    [key]: types[type]({key, type, config})
   });
 };
 
@@ -43,27 +45,13 @@ const customFilterFunctions =
         mergeAll
       )(customFilters);
 
-console.log('ppppppppppppppppppppppppppppppppppppppppppppppppppp');
-console.log('ppppppppppppppppppppppppppppppppppppppppppppppppppp');
-console.log('ppppppppppppppppppppppppppppppppppppppppppppppppppp');
-console.log('ppppppppppppppppppppppppppppppppppppppppppppppppppp');
-console.log('ppppppppppppppppppppppppppppppppppppppppppppppppppp');
-console.log(customFilterFunctions);
-
 export const defaultFiltersFunctions = {
-  tags:
-  (tagsArray, us) =>
-    (isEmpty(tagsArray) ?
-     us :
-     filter(u => !isEmpty(intersection(tagsArray, getOr([], 'tags', u))))(us)
-    ),
   term:
   (term, us) =>
     (isEmpty(term) ?
      us :
      filter(u => u.id.includes(term))(us))
   ,
-
 };
 
 export const sorts = {
@@ -78,10 +66,24 @@ export const filterFunctions =
         customFilterFunctions,
       ]);
 
-console.log('hey');
-console.log(filterFunctions);
+export const applyFilters = curry((filters, units) => {
+  const fs = pickBy(identity, filters); // make sure we are only dealing with actual values
+  const selectedFilters = keys(fs); // get the keys of all the currently set filters
+
+  const availableFilters = keys(filterFunctions);
+
+  const appliedFilters = intersection(selectedFilters, availableFilters); // make sure we only apply existing filters
+
+  const funcs = map(
+    k => partial(filterFunctions[k], [fs[k]]), // apply the currently set value of the filter to the filter function
+    appliedFilters
+  );
+
+  return pipe(...funcs)(units); // pipe the supplied units through the filter functions
+});
 
 export default {
   filterFunctions,
+  applyFilters,
   sorts
 };
