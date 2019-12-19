@@ -7,6 +7,7 @@ import {
 
 // turn a tabletop entry into a zipped entry according to dot notation
 // eg combine rows tags.0, tags.1 into tags[]
+// TODO this is not working
 const zipEntry = entry => reduce(
   (a, k) => set(k, entry[k], a),
   entry,

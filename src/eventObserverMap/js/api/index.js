@@ -1,28 +1,12 @@
-import {
-  get,
-  zipObjectDeep,
-  keys,
-  values,
-  map,
-} from 'lodash/fp';
 
 import jsonApi from './jsonApi';
 import sheetsApi from './sheetsApi';
+import {
+  testingEventsApi,
+  testingObservationsApi,
+} from './testing.js';
 
 import config from '../../../config';
-
-import testingEvents from '../../../../data/testing_events.json';
-import testingObservations from '../../../../data/testing_observations.json';
-
-const mapExpandedArrays = map(u => zipObjectDeep(keys(u), values(u)));
-const testingEventsApi = () => ({
-  get: () => Promise.resolve(mapExpandedArrays(testingEvents)),
-  post: () => Promise.resolve(mapExpandedArrays(testingEvents)),
-});
-const testingObservationsApi = () => ({
-  get: () => Promise.resolve(mapExpandedArrays(testingObservations)),
-  post: () => Promise.resolve(mapExpandedArrays(testingObservations)),
-});
 
 const {
   events: {
