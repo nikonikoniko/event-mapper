@@ -54,10 +54,6 @@ export const defaultFiltersFunctions = {
   ,
 };
 
-export const sorts = {
-
-};
-
 export const buttons = ['manufacturer', 'pattern-maker', 'GOTS', 'fair-trade', 'cotton'];
 
 export const filterFunctions =
@@ -68,22 +64,28 @@ export const filterFunctions =
 
 export const applyFilters = curry((filters, units) => {
   const fs = pickBy(identity, filters); // make sure we are only dealing with actual values
-  const selectedFilters = keys(fs); // get the keys of all the currently set filters
 
-  const availableFilters = keys(filterFunctions);
-
-  const appliedFilters = intersection(selectedFilters, availableFilters); // make sure we only apply existing filters
-
-  const funcs = map(
-    k => partial(filterFunctions[k], [fs[k]]), // apply the currently set value of the filter to the filter function
-    appliedFilters
+  const selectedFilters = intersection( // only allow available functions
+    keys(fs),
+    keys(filterFunctions)
   );
 
-  return pipe(...funcs)(units); // pipe the supplied units through the filter functions
+  const applyValue =
+          filterKey =>
+            partial(
+              filterFunctions[filterKey], // the function used for filtering
+              [fs[filterKey]] // the value supplied
+            );
+
+  const funcs = map(
+    applyValue,
+    selectedFilters,
+  );
+
+  return pipe(...funcs)(units); // pipe the supplied units through the filter functions sequentially
 });
 
 export default {
   filterFunctions,
   applyFilters,
-  sorts
 };

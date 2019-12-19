@@ -48,8 +48,7 @@ export default class Collection extends Component {
     this.state = {
       searchterm: params.filters.term || this.props.filters.term,
       typing: false,
-      filters: {
-      },
+      filters: {},
       hoverUnit: false,
       range: [moment('2013-01-01').valueOf(), moment().valueOf()],
       visibleMarkers: [],
