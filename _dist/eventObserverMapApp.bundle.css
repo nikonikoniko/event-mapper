@@ -1224,7 +1224,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   margin-right: 20px; }
 
 .noUi-connect {
-  background: #E77A91; }
+  background: #ff6347; }
 
 .noUi-horizontal {
   height: 15px; }
@@ -1265,8 +1265,8 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   .eventObserverMap .collection .tagbutton {
     font-size: 1.1rem;
     margin-right: 1rem;
-    border-color: #E77A91;
-    color: #E77A91; }
+    border-color: #ff6347;
+    color: #ff6347; }
     .eventObserverMap .collection .tagbutton:hover {
       background-color: #E0f0fd; }
   .eventObserverMap .collection .card {
@@ -1415,13 +1415,13 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
       padding-top: 1rem;
       padding-bottom: 1rem;
       padding-left: 4rem;
-      border-bottom: 2px solid #E77A91; }
+      border-bottom: 2px solid #ff6347; }
       .eventObserverMap .collection .collectionsearch input[type=text]:focus {
         background-color: #fff;
-        border-bottom: 2px solid #E77A91; }
+        border-bottom: 2px solid #ff6347; }
       .eventObserverMap .collection .collectionsearch input[type=text]:hover {
         background-color: #efefef;
-        border-bottom: 2px solid #E77A91; }
+        border-bottom: 2px solid #ff6347; }
       @media (max-width: 750px) {
         .eventObserverMap .collection .collectionsearch input[type=text] {
           padding-left: 1rem; } }
@@ -1448,7 +1448,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 .eventObserverMap .container.subheader {
   position: sticky !important;
   z-index: 4000;
-  background-color: #E77A91;
+  background-color: #ff6347;
   color: white; }
   @media (max-width: 750px) {
     .eventObserverMap .container.subheader {
@@ -1479,22 +1479,22 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   text-align: right; }
 
 .eventObserverMap .marker-cluster-small {
-  background-color: rgba(231, 122, 136, 0.5); }
+  background-color: rgba(255, 99, 71, 0.7); }
 
 .eventObserverMap .marker-cluster-small div {
-  background-color: rgba(231, 122, 136, 0.7); }
+  background-color: rgba(255, 99, 71, 0.5); }
 
 .eventObserverMap .marker-cluster-medium {
-  background-color: rgba(231, 122, 136, 0.5); }
+  background-color: rgba(255, 99, 71, 0.7); }
 
 .eventObserverMap .marker-cluster-medium div {
-  background-color: rgba(231, 122, 136, 0.7); }
+  background-color: rgba(255, 99, 71, 0.5); }
 
 .eventObserverMap .marker-cluster-large {
-  background-color: rgba(231, 122, 136, 0.5); }
+  background-color: rgba(255, 99, 71, 0.7); }
 
 .eventObserverMap .marker-cluster-large div {
-  background-color: rgba(231, 122, 136, 0.7); }
+  background-color: rgba(255, 99, 71, 0.5); }
 
 .eventObserverMap .marker-cluster span {
   line-height: 30px;
