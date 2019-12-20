@@ -21,21 +21,20 @@
 
 .chartarea{
   position: absolute;
-  top:0;
 }
 
-.sliderarea{
-  position: relative;
-  padding: 1rem 4rem 0rem 4rem;
-  font-size: 1rem; 
-  background-color: rgba(0,0,0,.1);
-}
 .chart {
   position: absolute;
-  top:0rem;
-  z-index: 800;
+  bottom:0vh;
+  z-index: 1001;
   background: rgba(170, 211, 223, .5);
+  background: transparent;
   border-bottom: 3px solid red;
+}
+.leaflet-container .leaflet-control-attribution, .leaflet-container .leaflet-control-scale {
+    font-size: 11px;
+    top: 0px;
+    position: absolute;
 }
 
 .col-4 #mapcol .chartarea{
@@ -55,15 +54,6 @@
  * These styles are required for noUiSlider to function.
  * You don't need to change these rules to apply your design.
  */
-
-.rangemeta {
-  padding-bottom: 1rem;
-}
-
-.rangemeta *{
-  padding-left: .4rem;
-  padding-right: .4rem;
-}
 
 .noUi-target,
 .noUi-target * {

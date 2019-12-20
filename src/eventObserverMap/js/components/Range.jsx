@@ -68,15 +68,21 @@ export default class CollectionRangeComponent extends Component {
 
   render() {
     return (
-      <div className="sliderarea">
-        <div className="rangemeta">
-          <i className="fa fa-clock-o" />
-          {t('From')}:
-          <b>{moment(this.state.selectedStartDate).format('MMM Do YYYY')}</b>
-          {t('To')}:
-          <b>{moment(this.state.selectedEndDate).format('MMM Do YYYY')}</b>
+      <div className="sliderarea container filter">
+        <div className="columns">
+          <div className="col-2">
+            <h6>
+
+              {t('from')}:<br />
+              <i className="fa fa-clock-o" /><b>{moment(this.state.selectedStartDate).format('D-M-Y')}</b><br />
+              {t('to')}:<br />
+              <i className="fa fa-clock-o" /><b>{moment(this.state.selectedEndDate).format('D-M-Y')}</b>
+            </h6>
+          </div>
+          <div className="col-10">
+            <div className="slider" id="slider" />
+          </div>
         </div>
-        <div className="slider" id="slider" />
       </div>
     );
   }

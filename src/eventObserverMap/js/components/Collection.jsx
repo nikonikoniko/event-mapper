@@ -236,9 +236,9 @@ export default class Collection extends Component {
               <input placeholder={translator('Type to Search...')} id="searchbox" type="text" onChange={this.search} />
             </div>
 
-            {slider}
 
             <div className="filters">
+              {slider}
               <FiltersCustom
                 setFilter={this.setFilter}
                 units={this.props.events}
