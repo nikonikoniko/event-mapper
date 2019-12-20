@@ -1261,7 +1261,12 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   border: 0px solid transparent;
   width: 5px !important;
   content: "";
-  overflow: hidden; }
+  overflow: hidden;
+  cursor: move;
+  /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab; }
   .noUi-handle:before {
     width: 0px; }
 
