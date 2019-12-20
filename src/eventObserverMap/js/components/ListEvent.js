@@ -27,8 +27,9 @@ export default class ListEvidence extends Component {
             />
           </div>
           <div className="col-9 col-sm-12 infocol">
+        <span>{i.id}</span>
             <div className="col-12 col-sm-12">
-              <h5>{i.id}</h5>
+              <h5>{i.name}</h5>
             </div>
             <div className="col-12 col-sm-12" >
               <small>

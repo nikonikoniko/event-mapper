@@ -69,8 +69,9 @@ export default class Event extends Component {
           >
             ← {t('back to database')}
           </button>
-
-          <h3>{i.id}</h3>
+<hr />
+        <span>{i.id}</span>
+          <h3>{i.name}</h3>
 
         <p>
         {i.description}
