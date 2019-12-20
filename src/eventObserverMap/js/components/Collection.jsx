@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import {
   map,
-  intersectionBy,
   size,
-  uniqBy,
   concat,
   isEmpty,
-  filter,
-  xorBy,
   sortBy,
   reverse,
-  first,
+  pipe,
 } from 'lodash/fp';
 import moment from 'moment';
 
@@ -34,6 +30,8 @@ import {
   intersectionById,
   dateIncludedP,
   filterByRange,
+  uniqById,
+  xorById,
 } from '../types/event';
 
 const mapW = map.convert({cap: false});
@@ -149,18 +147,20 @@ export default class Collection extends Component {
     // const nolocationEvents = filter(i => !i.latitude && !i.longitude, events);
     const nolocationEvents = noHaveLocation(events);
 
-    const visiblebymap = size(visible) > 0
-          ? intersectionById(events, visible)
+    const visiblebymap = size(visible) > 0 ?
+          intersectionById(events, visible)
           : locationEvents;
 
-    let visibleEvents = visiblebymap;
+    const visibleEvents = dateIncludedP(events) ?
+        filterByRange([startDate, endDate], visiblebymap)
+        : visiblebymap;
 
-    if (dateIncludedP(events)) {
-      visibleEvents = filterByRange([startDate, endDate], visiblebymap);
-    }
-
-    const invisibleEvents = size(visible) > 0
-          ? uniqBy('id', concat(xorBy('id', events, visible), nolocationEvents))
+    const invisibleEvents = size(visible) > 0 ?
+          pipe(
+            () => xorById(events, visible),
+            concat(nolocationEvents),
+            uniqById
+          )(null) // uniqById(concat(xorById(events, visible), nolocationEvents))
           : nolocationEvents;
 
     const makeEvents = (is) => mapW((i, k) =>

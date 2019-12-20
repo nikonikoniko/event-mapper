@@ -10,6 +10,8 @@ import {
   compact,
   get,
   curry,
+  uniqBy,
+  xorBy,
 } from 'lodash/fp';
 
 import moment from 'moment';
@@ -47,6 +49,9 @@ export const inRange = curry(
 export const filterByRange =
   ([startDate, endDate], us) => filter(inRange([startDate, endDate]), us);
 
+export const uniqById = uniqBy(idField);
+export const xorById = xorBy(idField);
+
 export const cleanOne = pipe(
   zipEvent,
   u => u,
@@ -64,4 +69,6 @@ export default {
   noHaveLocation,
   inRange,
   filterByRange,
+  uniqById,
+  xorById,
 };
