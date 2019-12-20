@@ -91,8 +91,9 @@ class Select extends Component {
     )(units);
 
     const toggleTags = (v) => {
+      const current = filters[key];
       setFilter({
-        [key]: v,
+        [key]: v === current ? '' : v,
       });
     };
 
