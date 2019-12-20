@@ -9,6 +9,7 @@ import {
   contains,
   difference,
   concat,
+  without,
 } from 'lodash/fp';
 
 import {
@@ -40,11 +41,12 @@ class Tags extends Component {
     )(units);
 
     const toggleTags = (v) => {
-      const aaa = contains(v, filters[key])
-            ? difference([v], filters[key])
-            : concat(filters[key], [v]);
+      const current = filters[key];
+      const aaa = contains(v, current)
+            ? without([v], current)
+            : concat(current, [v]);
       setFilter({
-        tags: aaa,
+        [key]: uniq(compact(aaa)),
       });
     };
 

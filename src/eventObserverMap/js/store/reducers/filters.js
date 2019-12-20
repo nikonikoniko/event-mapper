@@ -17,12 +17,12 @@ const filters = (
   state = {},
   {type, payload}
 ) => {
+  console.log('uuuuuuuuuupdaaaate fiiiilttterrsss');
+  console.log(type, payload);
   switch (type) {
-    case 'SEND_FILTERS':
-      return merge(
-        state,
-        {filters: payload}
-      );
+    case 'UPDATE_FILTERS':
+      console.log('updating');
+      return payload;
     case 'RESET_FILTERS':
       return set('filters', {}, state);
     default:

@@ -54,8 +54,6 @@ export const defaultFiltersFunctions = {
   ,
 };
 
-export const buttons = ['manufacturer', 'pattern-maker', 'GOTS', 'fair-trade', 'cotton'];
-
 export const filterFunctions =
       mergeAll([
         defaultFiltersFunctions,

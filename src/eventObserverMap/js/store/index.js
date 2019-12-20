@@ -14,9 +14,9 @@ import {updateParams} from './params';
 //   localStorage.clear();
 // }
 //
-// const persistedState =
-//  localStorage.getItem('reduxState') ?
-//    JSON.parse(localStorage.getItem('reduxState')) : {};
+const persistedState =
+  localStorage.getItem('reduxState') ?
+    JSON.parse(localStorage.getItem('reduxState')) : {};
 
 let middleware = [thunkMiddleware];
 if (process.env.NODE_ENV !== 'production') {
@@ -25,14 +25,14 @@ if (process.env.NODE_ENV !== 'production') {
 
 export const store = createStore(
   reader,
-  // persistedState,
+  persistedState,
   applyMiddleware(...middleware)
 );
 //
-// store.subscribe(() => {
-//   localStorage.setItem('sydate', Date.now());
-//   localStorage.setItem('reduxState', JSON.stringify(store.getState()));
-// });
+store.subscribe(() => {
+  // localStorage.setItem('sydate', Date.now());
+  localStorage.setItem('reduxState', JSON.stringify(store.getState()));
+});
 
 store.subscribe(() => {
   updateParams(store.getState());

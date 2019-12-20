@@ -4,7 +4,10 @@ import {
 } from './filters';
 
 import {
-  updateEvents, selectEvent, unsetEvent, retrieveEvent
+  updateEvents,
+  selectEvent,
+  unsetEvent,
+  retrieveEvent
 } from './events';
 
 import {

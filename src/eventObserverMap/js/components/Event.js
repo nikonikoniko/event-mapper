@@ -58,18 +58,19 @@ export default class Event extends Component {
 
   render() {
     const i = this.props.event;
-
-
     return (
       <div className="columns event">
 
 
         <div className="col-7 eventcol col-sm-12">
-          <button className="btn btn-orange back-button" onClick={this.props.clear}>
+          <button
+            className="btn btn-orange back-button"
+            onClick={this.props.clear}
+          >
             ← {t('back to database')}
           </button>
 
-          <span className="lbl">{i.id}</span>
+          <h3>{i.id}</h3>
 
         </div>
         <div className="col-5 eventcol obscol col-sm-12">

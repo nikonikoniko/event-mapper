@@ -1,11 +1,16 @@
 import moment from 'moment';
-import {reduce, each, omit, isEmpty, compact, last, merge} from 'lodash/fp';
+import {reduce, each, uniq, omit, isEmpty, compact, last, merge, isArray} from 'lodash/fp';
 
 import history from './history';
 
 const reduceW = reduce.convert({cap: false});
 
-export const querystring = reduceW((a, v, k) => (v ? `${a}${k}=${v}&` : a), '?');
+export const querystring = reduceW((a, v, k) => {
+  const vv = isArray(v) ? ',' + uniq(v).join(',') : v;
+  console.log(vv);
+  return (v ? `${a}${k}=${vv}&` : a);
+}, '?');
+                                 ;
 
 export const query = () => {
   const search = location.search.substring(1);
@@ -18,6 +23,12 @@ export const query = () => {
     if (k === 'before' || k === 'after') {
       dict[k] = moment(v).format('YYYY-MM-DD');
     }
+    console.log(k, v);
+    console.log('asdasdasdasdasdasdasd');
+    if (v.includes(',')) {
+      dict[k] = uniq(compact(v.split(',')));
+    }
+    console.log(dict);
   })(ks);
   return omit(isEmpty, dict);
 };
@@ -46,15 +57,13 @@ export const params = {
 };
 
 export const updateParams = state => {
-  if (last(location.pathname.match(/\w+/g)) === 'database') {
-    updateQS(state.database.filters);
-    if (!isEmpty(state.unit.id)) {
-      backQS({unit: state.unit.id});
-    } // else { updateQS({unit: ''}); }
-    if (!isEmpty(state.event.id)) {
-      backQS({event: state.event.id});
-    } // else { updateQS({event: ''}); }
-  }
+  updateQS(state.filters);
+  if (!isEmpty(state.observation.id)) {
+    backQS({unit: state.unit.id});
+  } // else { updateQS({unit: ''}); }
+  if (!isEmpty(state.event.id)) {
+    backQS({event: state.event.id});
+  } // else { updateQS({event: ''}); }
 };
 
 

@@ -47,14 +47,10 @@ const event = (
         meat: payload
       });
     case 'UNSET_EVENT':
+      console.log('unsetting event!!!');
       return merge(
         defaultEvent,
         {id: ''}
-      );
-    case 'REQUEST_EVENT':
-      return merge(
-        state,
-        {updating: payload}
       );
     default:
       return state;

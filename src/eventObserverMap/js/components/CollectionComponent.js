@@ -5,8 +5,6 @@ import {
   size,
   uniqBy,
   concat,
-  difference,
-  contains,
   isEmpty,
   filter,
   xorBy,
@@ -19,7 +17,7 @@ import moment from 'moment';
 import {params} from '../store/params';
 import {timeMeOut} from '../containers/helpers';
 
-import {buttons, applyFilters} from '../../../filters';
+import {applyFilters} from '../../../filters';
 
 
 // import Filters from './Filters';
@@ -67,34 +65,27 @@ export default class Collection extends Component {
     } else {
       this.props.clearEvent();
     }
+    console.log(']]]]]]]]]]]]]]]]]]]]');
+    console.log(params);
+    this.props.updateEvents();
     this.props.update(params.filters);
   }
 
   setSort(field) {
     this.setState({sort: field});
   }
-  //
-  // toggleFilter(k, v) {
-  //   const aaa = contains(field, this.state.filters)
-  //     ? difference([field], this.state.filters)
-  //     : concat(this.state.filters, [field]);
-  //   this.setState({
-  //     filters: aaa
-  //   });
-  // }
-
 
   setFilter(f) {
-    this.setState({
-      filters: f,
-    });
+    console.log('setting filter', f);
+    this.props.update(f);
   }
 
 
   search(e) {
     // this.setState({typing: true, sort: 'relevance'});
     const term = e.target.value;
-    this.setState({filters: {term}});
+    this.props.update({term});
+    // this.setState({filters: {term}});
     // timeMeOut(() => {
     //   this.props.update({term});
     //   this.setState({typing: false});
@@ -138,7 +129,7 @@ export default class Collection extends Component {
     const updating = this.props.updating || this.state.typing;
     const visible = this.state.visibleMarkers;
 
-    const events = applyFilters(this.state.filters)(this.props.events);
+    const events = applyFilters(this.props.filters)(this.props.events);
 
     const locationEvents = filter(i => i.latitude && i.longitude, events);
     const nolocationEvents = filter(i => !i.latitude && !i.longitude, events);
@@ -269,7 +260,7 @@ export default class Collection extends Component {
         <FiltersCustom
           setFilter={this.setFilter}
           units={this.props.events}
-          filters={this.state.filters}
+          filters={this.props.filters}
         />
 
             </div>

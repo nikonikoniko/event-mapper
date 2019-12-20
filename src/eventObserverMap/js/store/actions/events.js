@@ -9,11 +9,18 @@ import api from '../../api';
 const action = curry((name, payload) => ({type: name, payload}));
 
 const selectEvent = action('SELECT_EVENT');
-const unsetEvent = action('UNSET_EVENT');
 
-const updateEvents = filters =>
-  dispatch => api.events.post(filters)
+const unsetEvent = () => action('UNSET_EVENT', null);
+
+const updateEvents = () =>
+  dispatch => api.events.get()
     .then(r => {
+      console.log('aaaaaaaaaaaaaaaaaaaaaaaa');
+      console.log('aaaaaaaaaaaaaaaaaaaaaaaa');
+      console.log('aaaaaaaaaaaaaaaaaaaaaaaa');
+      console.log('aaaaaaaaaaaaaaaaaaaaaaaa');
+      console.log('aaaaaaaaaaaaaaaaaaaaaaaa');
+      console.log(r);
       dispatch(action('SEND_EVENTS', r));
       dispatch(action('EVENTS_LOADING', false));
       return r;
