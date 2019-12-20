@@ -17,9 +17,18 @@ localstorage is used to remember a user's filter state and, and query parameters
 
 ### todo
 
-change config
+config values that still need to be developped
+
+```
+use_localstorage // currently just ON
+use_params // currently just ON
+search_fields // which fields to use for search
+```
+
+### config that is ready to go
 
 ```javascript
+tilesUrl: link // the openstreetmap tiles url.  defaults to a black and white one
 events.source_type:
                    http_json |
                    file_json |
@@ -27,6 +36,14 @@ events.source_type:
 events.config.spreadsheet_id: "" // if google_sheet is chosen, the id of the spreadsheet
 events.config.sheet_name: "" // if google_sheet is chosen, the name of the sheet in the spreadsheet
 events.config.json_url // if http_json is chosen, the url where the JSON can be requested from
+
+events.filter_fields: array // the fields of the events that should show up in the filters box
+  // config style like
+{
+key: str // the key
+type: tagsFilter | select // see below for documentation
+config: {} // on a per-type basis
+}
 
 observations.source_type:
                     http_json |

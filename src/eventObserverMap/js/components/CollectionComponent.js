@@ -47,7 +47,6 @@ export default class Collection extends Component {
     this.updateFrontentView = this.updateFrontentView.bind(this);
 
     this.state = {
-      searchterm: params.filters.term || this.props.filters.term,
       typing: false,
       filters: {},
       hoverUnit: false,
@@ -65,10 +64,9 @@ export default class Collection extends Component {
     } else {
       this.props.clearEvent();
     }
-    console.log(']]]]]]]]]]]]]]]]]]]]');
-    console.log(params);
     this.props.updateEvents();
     this.props.update(params.filters);
+    document.getElementById('searchbox').value = params.filters.term || null;
   }
 
   setSort(field) {
@@ -84,12 +82,10 @@ export default class Collection extends Component {
   search(e) {
     // this.setState({typing: true, sort: 'relevance'});
     const term = e.target.value;
-    this.props.update({term});
-    // this.setState({filters: {term}});
-    // timeMeOut(() => {
-    //   this.props.update({term});
-    //   this.setState({typing: false});
-    // });
+    timeMeOut(() => {
+      this.props.update({term});
+      this.setState({typing: false});
+    });
   }
 
   typing(b) {
@@ -240,7 +236,7 @@ export default class Collection extends Component {
             id="eventlist"
           >
             <div className="collectionsearch">
-              <input placeholder={translator('Type to Search...')} value={this.state.searchterm} type="text" onChange={this.search} />
+              <input placeholder={translator('Type to Search...')} id="searchbox" type="text" onChange={this.search} />
             </div>
 
             {slider}

@@ -13,6 +13,7 @@ import {
   get,
   isEqual,
   pickBy,
+  includes,
 } from 'lodash/fp';
 
 import appConfig from './config';
@@ -60,7 +61,7 @@ export const defaultFiltersFunctions = {
   (term, us) =>
     (isEmpty(term) ?
      us :
-     filter(u => u.id.includes(term))(us))
+     filter(u => includes(term, u.name))(us))
   ,
 };
 
