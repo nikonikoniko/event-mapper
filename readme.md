@@ -38,6 +38,11 @@ observations.config.sheet_name: "" // if google_sheet is chosen, the name of the
 observations.config.json_url // if http_json is chosen, the url where the JSON can be requested from
 ```
 
+## filter by particular fields
+
+show config possibilities
+
+#### tagfilter
 
 
 ## current testing spreadsheet
