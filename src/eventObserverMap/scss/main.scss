@@ -75,6 +75,15 @@ $rgba-secondary:rgba(255, 99, 71,.7);
 .collection {
   font-family: $font-family;
 
+  hr {
+      border: 0;
+      height: 1px;
+      background: #333;
+      background-image: linear-gradient(to right, #fb8520, #2a98b7, #fb8520);
+      margin-top: 2rem;
+      margin-bottom: 2rem; }
+
+
   .btn.on{
     background-color: $primary-color !important;
     color:white !important;

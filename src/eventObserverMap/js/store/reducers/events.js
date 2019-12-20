@@ -20,7 +20,6 @@ const events = (
   state = defaultEvents,
   {type, payload}
 ) => {
-  console.log('received action', {type, payload});
   switch (type) {
     case 'SEND_EVENTS':
       return set('ds', payload, state);
@@ -39,7 +38,6 @@ const event = (
   state = defaultEvent,
   {type, payload}
 ) => {
-  console.log('received action', {type, payload});
   switch (type) {
     case 'SELECT_EVENT':
       return merge(state, {
@@ -47,7 +45,6 @@ const event = (
         meat: payload
       });
     case 'UNSET_EVENT':
-      console.log('unsetting event!!!');
       return merge(
         defaultEvent,
         {id: ''}
