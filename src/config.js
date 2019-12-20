@@ -14,6 +14,8 @@ const defaults = {
   events: {
     source_type: 'testing_events',
     config: {},
+    idField: 'id',
+    dateField: 'date',
     filter_fields: [
       {
         key: 'tags',
@@ -34,6 +36,7 @@ const defaults = {
   observations: {
     source_type: 'testing_observations',
     config: {},
+    idField: 'id',
   }
 };
 

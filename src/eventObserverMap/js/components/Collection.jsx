@@ -28,6 +28,13 @@ import FiltersCustom from './filters/FiltersCustom.jsx';
 
 import translator from '../../../translations';
 
+import {
+  haveLocation,
+  noHaveLocation,
+  intersectionById,
+  dateIncludedP,
+} from '../types/event';
+
 const mapW = map.convert({cap: false});
 
 export default class Collection extends Component {
@@ -119,24 +126,38 @@ export default class Collection extends Component {
   }
 
   render() {
-    const updating = this.props.updating || this.state.typing;
-    const visible = this.state.visibleMarkers;
+    const {
+      props: {
+        filters,
+        events: allEvents,
+        updating: isUpdating,
+      },
+      state: {
+        typing,
+        visibleMarkers: visible,
+        range: [startDate, endDate],
+      }
+    } = this;
 
-    const events = applyFilters(this.props.filters)(this.props.events);
+    const updating = isUpdating || typing;
 
-    const locationEvents = filter(i => i.latitude && i.longitude, events);
-    const nolocationEvents = filter(i => !i.latitude && !i.longitude, events);
+    const events = applyFilters(filters)(allEvents);
+
+    // const locationEvents = filter(i => i.latitude && i.longitude, events);
+    const locationEvents = haveLocation(events);
+    // const nolocationEvents = filter(i => !i.latitude && !i.longitude, events);
+    const nolocationEvents = noHaveLocation(events);
 
     const visiblebymap = size(visible) > 0
-          ? intersectionBy('id', events, visible)
+          ? intersectionById(events, visible)
           : locationEvents;
 
     let visibleEvents = visiblebymap;
 
-    if (first(events) && 'date' in first(events)) {
+    if (dateIncludedP(events)) {
       visibleEvents = filter((d) =>
-                                    (moment(d.date) >= moment(this.state.range[0])
-                                     && moment(d.date) <= moment(this.state.range[1])), visiblebymap); // eslint-disable-line
+                                    (moment(d.date) >= moment(startDate)
+                                     && moment(d.date) <= moment(endDate)), visiblebymap); // eslint-disable-line
     }
 
     const invisibleEvents = size(visible) > 0
