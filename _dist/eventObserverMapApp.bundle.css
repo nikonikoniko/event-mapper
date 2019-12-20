@@ -895,21 +895,20 @@
   display: none; }
 
 .chartarea {
-  position: absolute;
-  top: 0; }
-
-.sliderarea {
-  position: relative;
-  padding: 1rem 4rem 0rem 4rem;
-  font-size: 1rem;
-  background-color: rgba(0, 0, 0, 0.1); }
+  position: absolute; }
 
 .chart {
   position: absolute;
-  top: 0rem;
-  z-index: 800;
+  bottom: 0vh;
+  z-index: 1001;
   background: rgba(170, 211, 223, 0.5);
+  background: transparent;
   border-bottom: 3px solid red; }
+
+.leaflet-container .leaflet-control-attribution, .leaflet-container .leaflet-control-scale {
+  font-size: 11px;
+  top: 0px;
+  position: absolute; }
 
 .col-4 #mapcol .chartarea {
   display: none; }
@@ -923,13 +922,6 @@
  * These styles are required for noUiSlider to function.
  * You don't need to change these rules to apply your design.
  */
-.rangemeta {
-  padding-bottom: 1rem; }
-
-.rangemeta * {
-  padding-left: .4rem;
-  padding-right: .4rem; }
-
 .noUi-target,
 .noUi-target * {
   -webkit-touch-callout: none;
@@ -1211,8 +1203,8 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   right: 120%; }
 
 .slider {
-  margin-top: .5rem;
-  width: 100%; }
+  margin-top: 1rem;
+  width: 90%; }
 
 .noUi-target {
   background: #F9F9F9;
@@ -1255,6 +1247,24 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   bottom: auto;
   top: 120%; }
 
+.noUi-connects {
+  /* border-radius: 3px; */
+  border-radius: 0px;
+  background-color: #ff6347; }
+
+.noUi-handle {
+  top: -3px !important;
+  border-radius: 0px !important;
+  background-color: #24a8e0;
+  box-shadow: none;
+  height: 2rem !important;
+  border: 0px solid transparent;
+  width: 5px !important;
+  content: "";
+  overflow: hidden; }
+  .noUi-handle:before {
+    width: 0px; }
+
 .eventObserverMap .filters .filter {
   background-color: #E0f0fd;
   font-family: "IBM Plex Mono"; }
@@ -1286,6 +1296,13 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 .eventObserverMap .collection {
   font-family: "Merriweather";
   background-color: #fff; }
+  .eventObserverMap .collection hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #fb8520, #2a98b7, #fb8520);
+    margin-top: 2rem;
+    margin-bottom: 2rem; }
   .eventObserverMap .collection .btn.on {
     background-color: #ff6347 !important;
     color: white !important;
