@@ -351,8 +351,8 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 
 
 .slider {
-  margin-top: .5rem;
-  width:100%;
+  margin-top: 1rem;
+  width:90%;
 }
 
 .noUi-target {
@@ -404,4 +404,25 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 .noUi-horizontal .noUi-tooltip {
   bottom: auto;
   top: 120%;
+}
+
+.noUi-connects {
+    /* border-radius: 3px; */
+    border-radius: 0px;
+    background-color: $primary-color;
+}
+
+.noUi-handle {
+    top: -3px !important;
+    border-radius: 0px !important;
+    background-color: $blue;
+    box-shadow: none;
+    height: 2rem !important;
+    border: 0px solid transparent;
+    width: 5px !important;
+    content: "";
+    overflow: hidden;
+    &:before {
+        width:0px;
+    }
 }
