@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import {map, isEmpty, concat, compact} from 'lodash/fp';
+import {isEmpty, concat} from 'lodash/fp';
 import Promise from 'bluebird';
 import t from '../../../translations';
-import {location, eventTitle, eventSummary} from '../containers/helpers';
 
 import {api} from '../api';
-
-const mapW = map.convert({cap: false});
 
 
 export default class Event extends Component {
@@ -36,26 +33,6 @@ export default class Event extends Component {
     }
   }
 
-  componentDidUpdate() {
-    // console.log(this.props.event.units);
-    //
-    // if (isEmpty(this.state.units) &&
-    // this.props.event && !isEmpty(this.props.event.units)) {
-    //   Promise.reduce(
-    //     this.props.event.units,
-    //     (acc, uid) => {
-    //       console.log(uid);
-    //       return api.get(`units/${uid}`).then(concat(acc)).catch(() => {
-    //         console.log(`failed retrieving ${uid}`);
-    //         return Promise.resolve(acc);
-    //       });
-    //     },
-    //     []
-    //   ).then(us => this.setState({units: compact(us)}))
-    //   .catch(console.log);
-    // }
-  }
-
   render() {
     const i = this.props.event;
     return (
@@ -69,13 +46,13 @@ export default class Event extends Component {
           >
             ← {t('back to database')}
           </button>
-<hr />
-        <span>{i.id}</span>
+          <hr />
+          <span>{i.id}</span>
           <h3>{i.name}</h3>
 
-        <p>
-        {i.description}
-      </p>
+          <p>
+            {i.description}
+          </p>
 
         </div>
         <div className="col-5 eventcol obscol col-sm-12">

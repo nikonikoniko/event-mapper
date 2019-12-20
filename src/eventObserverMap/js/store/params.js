@@ -1,34 +1,48 @@
 import moment from 'moment';
-import {reduce, each, uniq, omit, isEmpty, compact, last, merge, isArray} from 'lodash/fp';
+import {
+  reduce,
+  each,
+  uniq,
+  omit,
+  isEmpty,
+  compact,
+  merge,
+  isArray
+} from 'lodash/fp';
 
 import history from './history';
 
 const reduceW = reduce.convert({cap: false});
 
+// turn a dictionary of filters into a query string such as ?key=val&key=val
 export const querystring = reduceW((a, v, k) => {
-  const vv = isArray(v) ? ',' + uniq(v).join(',') : v;
-  console.log(vv);
+  // if the value is an array, make sure it's surrounded by commas for unpacking later
+  // add a comma at the beginning to signify it's an array
+  const vv = isArray(v) ? `,${uniq(v).join(',')}` : v;
+  // put the query string together
   return (v ? `${a}${k}=${vv}&` : a);
 }, '?');
-                                 ;
 
 export const query = () => {
+  // given a query string, return a valid dictionary of filters
+  // get the query string without the preceding ?
   const search = location.search.substring(1);
+  // get a list of key=value strings
   const ks = compact(search.split('&'));
   const dict = {};
+  // create the dictionary
   each(i => {
     const k = i.split('=')[0];
     const v = decodeURI(i.split('=')[1]);
     dict[k] = v;
+    // if it's a date, format it correctly
     if (k === 'before' || k === 'after') {
       dict[k] = moment(v).format('YYYY-MM-DD');
     }
-    console.log(k, v);
-    console.log('asdasdasdasdasdasdasd');
+    // if it has a comma, it's an array, so treat it as one
     if (v.includes(',')) {
       dict[k] = uniq(compact(v.split(',')));
     }
-    console.log(dict);
   })(ks);
   return omit(isEmpty, dict);
 };
