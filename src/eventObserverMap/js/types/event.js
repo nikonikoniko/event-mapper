@@ -34,15 +34,17 @@ export const intersectionById = intersectionBy(idField);
 // do the events have a date associated with them?
 export const dateIncludedP = us => !!size(compact(map(dateField, us)));
 
-export const clean = pipe(
+export const cleanOne = pipe(
   zipEvent,
   u => u,
 );
+export const cleanMany = map(cleanOne);
 
 export default {
   zipEvent,
   zipEvents,
-  clean,
+  cleanOne,
+  cleanMany,
   hasLocation,
   haveLocation,
   noHasLocation,
