@@ -3,14 +3,14 @@
 @import url('https://unpkg.com/leaflet@1.3.1/dist/leaflet.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 @import url('~react-leaflet-markercluster/dist/styles.min.css'); // css
- @import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Merriweather&display=swap');
 
 $pink: #E77A91;
 $orange: #ff6347;
 $blue: #24a8e0;
 $blue-light: #E0f0fd;
 
-$font-family: 'Raleway';
+$font-family: 'Merriweather';
 
 $background-color: #fff;
 $primary-color: $orange;

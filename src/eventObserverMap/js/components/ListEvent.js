@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {size, map} from 'lodash/fp';
+import {size, map, compact} from 'lodash/fp';
 // import {location, eventTitle} from '../containers/helpers';
 
 function zeroPad(num, places) { // eslint-disable-line
@@ -20,7 +20,7 @@ export default class ListEvidence extends Component {
         <div className="columns">
           <div className="col-3 col-sm-12">
             <img
-              src="https://imgplaceholder.com/420x320"
+      src="https://i.pickadummy.com/600x400?contrast=-2"
               width="100%"
               height="auto"
               alt=""
@@ -37,8 +37,8 @@ export default class ListEvidence extends Component {
             </div>
             <div className="col-12 col-sm-12">
               {map(t =>
-                <div>#{t}</div>
-              , i.tags)}
+                <span>#{t} </span>
+                   , compact(i.tags))}
 
             </div>
             <div className="col-2 col-sm-12 countu">
