@@ -23,7 +23,7 @@ import {applyFilters} from '../../../filters';
 import ListEvent from './ListEvent.jsx';
 import Event from './Event.jsx';
 import Map from './Map.jsx';
-// import Slider from './CollectionRangeComponent';
+import Slider from './Range.jsx';
 import FiltersCustom from './filters/FiltersCustom.jsx';
 
 import translator from '../../../translations';
@@ -220,10 +220,10 @@ export default class Collection extends Component {
       );
     }
 
-    const slider = '';
-    // <Slider
-    //   updateRange={this.range}
-    // />
+    const slider = (
+      <Slider
+        updateRange={this.range}
+      />);
 
     return (
       <div className="container collection">
@@ -238,16 +238,12 @@ export default class Collection extends Component {
 
             {slider}
 
-
-
-
-
             <div className="filters">
               <FiltersCustom
                 setFilter={this.setFilter}
                 units={this.props.events}
                 filters={this.props.filters}
-                />
+              />
             </div>
 
 

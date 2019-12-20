@@ -7,7 +7,7 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
 // import 'leaflet.markercluster/dist/leaflet.markercluster';
 import * as L from 'leaflet';
 
-// import Timeline from './CollectionTimelineComponent';
+import Timeline from './Timeline.jsx';
 import config from '../../../config';
 const {tilesUrl} = config;
 
@@ -108,10 +108,11 @@ export default class CollectionMapComponent extends Component {
     const markers = makemarkers(uniqBy('id', this.props.events), false);
     const visiblemarkers = makemarkers(uniqBy('id', this.props.visibleEvents));
 
-    const timeline = '';       // <Timeline
-            //   units={uniqBy('id', this.props.visibleEvents)}
-            //   updateRange={this.props.updateRange}
-            // />
+    const timeline = (
+      <Timeline
+        units={uniqBy('id', this.props.visibleEvents)}
+        updateRange={this.props.updateRange}
+      />);
 
     return (
       <div id="mapcol" className="mapcol">
