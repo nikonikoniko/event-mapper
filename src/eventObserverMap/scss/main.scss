@@ -6,15 +6,19 @@
  @import url('https://fonts.googleapis.com/css?family=Raleway');
 
 $pink: #E77A91;
+$orange: #ff6347;
 $blue: #24a8e0;
 $blue-light: #E0f0fd;
 
 $font-family: 'Raleway';
 
 $background-color: #fff;
-$primary-color: $pink;
+$primary-color: $orange;
 $highlight-color: $blue;
 $secondary-color: $blue-light;
+
+$rgba-primary:rgba(255, 99, 71,.5);
+$rgba-secondary:rgba(255, 99, 71,.7);
 
 /* @import "variables"; */
 @import "mixins";
@@ -341,24 +345,22 @@ $secondary-color: $blue-light;
 }
 
 .marker-cluster-small {
-  background-color: rgba(231, 122, 136,.5);
+  background-color: $rgba-secondary;
 }
 .marker-cluster-small div {
-  background-color: rgba(231, 122, 136,.7);
+  background-color: $rgba-primary;
 }
-
 .marker-cluster-medium {
-  background-color: rgba(231, 122, 136,.5);
+    background-color: $rgba-secondary;
 }
 .marker-cluster-medium div {
-  background-color: rgba(231, 122, 136,.7);
+    background-color: $rgba-primary;
 }
-
 .marker-cluster-large {
-  background-color: rgba(231, 122, 136,.5);
+    background-color: $rgba-secondary;
 }
 .marker-cluster-large div {
-  background-color: rgba(231, 122, 136,.7);
+  background-color: $rgba-primary;
 }
 
 .marker-cluster span {
