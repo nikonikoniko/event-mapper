@@ -19,7 +19,7 @@ const defaults = {
         key: 'tags',
         type: 'tagsFilter',
         config: {
-          max: 3
+          max: 8
         }
       }
     ]

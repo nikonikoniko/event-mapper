@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import {
   map,
+  pipe,
+  flatten,
+  uniq,
+  compact,
+  take,
+  contains,
+  difference,
+  concat,
 } from 'lodash/fp';
 
 import {
@@ -11,7 +19,10 @@ import {
 class Tags extends Component {
   render() {
     const {
-      filterConfig
+      filterConfig,
+      units,
+      filters,
+      setFilter,
     } = this.props;
     const {
       key,
@@ -20,8 +31,35 @@ class Tags extends Component {
       }
     } = filterConfig;
 
+    const buttons = pipe(
+      map(key),
+      flatten,
+      uniq,
+      compact,
+      take(maximumNumber),
+    )(units);
+
+    const toggleTags = (v) => {
+      const aaa = contains(v, filters[key])
+            ? difference([v], filters[key])
+            : concat(filters[key], [v]);
+      setFilter({
+        tags: aaa,
+      });
+    };
+
+
     return (
-        <div>im a tag {key} {maximumNumber}}</div>
+      <div>
+        { map((k) =>
+          <button
+            className={`btn tagbutton ${filters[key] && filters[key].includes(k) ? 'on' : ''}`}
+            onClick={() => toggleTags(k)}
+          >
+            { k }
+          </button>
+        , buttons)}
+      </div>
     );
   }
 }
@@ -54,9 +92,7 @@ export default class FiltersCustom extends Component { // eslint-disable-line
 
     return (
       <div>
-        hello
       {map(createComponentByType, customFilterConfigs)}
-      goodbye
       </div>
     );
   }

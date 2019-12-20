@@ -44,6 +44,7 @@ export default class Collection extends Component {
     this.hover = this.hover.bind(this);
     this.setSort = this.setSort.bind(this);
     this.range = this.range.bind(this);
+    this.setFilter = this.setFilter.bind(this);
 
     this.updateFrontentView = this.updateFrontentView.bind(this);
 
@@ -83,17 +84,9 @@ export default class Collection extends Component {
   // }
 
 
-  toggleTags(v) {
-    console.log('aaa');
-    console.log(this.state.filters);
-    const aaa = contains(v, this.state.filters.tags)
-      ? difference([v], this.state.filters.tags)
-      : concat(this.state.filters.tags, [v]);
-    console.log('bbb');
+  setFilter(f) {
     this.setState({
-      filters: {
-        tags: aaa,
-      }
+      filters: f,
     });
   }
 
@@ -146,8 +139,6 @@ export default class Collection extends Component {
     const visible = this.state.visibleMarkers;
 
     const events = applyFilters(this.state.filters)(this.props.events);
-
-    console.log(events);
 
     const locationEvents = filter(i => i.latitude && i.longitude, events);
     const nolocationEvents = filter(i => !i.latitude && !i.longitude, events);
@@ -274,20 +265,10 @@ export default class Collection extends Component {
                 </a>
               </span>
 
-              <div>
-                { map((k) =>
-                  <button
-                    className={`btn tagbutton ${this.state.filters.tags && this.state.filters.tags.includes(k) ? 'on' : ''}`}
-                    onClick={() => this.toggleTags(k)}
-                  >
-                    { k }
-                  </button>
-                , buttons)}
-      </div>
 
         <FiltersCustom
-          setFilter={console.log}
-          units={events}
+          setFilter={this.setFilter}
+          units={this.props.events}
           filters={this.state.filters}
         />
 
