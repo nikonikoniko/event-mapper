@@ -8,8 +8,11 @@ import {
   intersectionBy,
   size,
   compact,
+  get,
+  curry,
 } from 'lodash/fp';
 
+import moment from 'moment';
 import appConfig from '../../../config';
 
 const {
@@ -34,6 +37,16 @@ export const intersectionById = intersectionBy(idField);
 // do the events have a date associated with them?
 export const dateIncludedP = us => !!size(compact(map(dateField, us)));
 
+export const date = get(dateField);
+
+export const inRange = curry(
+  ([startDate, endDate], u) => (
+    moment(date(u)) >= moment(startDate) &&
+    moment(date(u)) <= moment(endDate)
+  ));
+export const filterByRange =
+  ([startDate, endDate], us) => filter(inRange([startDate, endDate]), us);
+
 export const cleanOne = pipe(
   zipEvent,
   u => u,
@@ -49,4 +62,6 @@ export default {
   haveLocation,
   noHasLocation,
   noHaveLocation,
+  inRange,
+  filterByRange,
 };

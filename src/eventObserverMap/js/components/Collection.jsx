@@ -33,6 +33,7 @@ import {
   noHaveLocation,
   intersectionById,
   dateIncludedP,
+  filterByRange,
 } from '../types/event';
 
 const mapW = map.convert({cap: false});
@@ -155,9 +156,7 @@ export default class Collection extends Component {
     let visibleEvents = visiblebymap;
 
     if (dateIncludedP(events)) {
-      visibleEvents = filter((d) =>
-                                    (moment(d.date) >= moment(startDate)
-                                     && moment(d.date) <= moment(endDate)), visiblebymap); // eslint-disable-line
+      visibleEvents = filterByRange([startDate, endDate], visiblebymap);
     }
 
     const invisibleEvents = size(visible) > 0
