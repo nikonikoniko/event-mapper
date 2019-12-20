@@ -238,6 +238,19 @@ export default class Collection extends Component {
 
             {slider}
 
+
+
+
+
+            <div className="filters">
+              <FiltersCustom
+                setFilter={this.setFilter}
+                units={this.props.events}
+                filters={this.props.filters}
+                />
+            </div>
+
+
             <div className="resultsMeta">
               <span>
                 <i className="fa fa-map-marker" />
@@ -248,14 +261,6 @@ export default class Collection extends Component {
                   {size(ilist) > 0 ? ` / ${size(ilist)} ${translator('off map')} ` : ' '}
                 </a>
               </span>
-
-
-        <FiltersCustom
-          setFilter={this.setFilter}
-          units={this.props.events}
-          filters={this.props.filters}
-        />
-
             </div>
 
 

@@ -132,14 +132,14 @@ $rgba-secondary:rgba(255, 99, 71,.7);
     padding-bottom: 2rem;
     padding-left: 4rem;
     font-size: 1rem;
-    background-color: rgba(0,0,0,.1);
-
+    background-color: $primary-color;
     font-size: 1rem;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: $primary-color;
+    color:white;
     padding: 1rem;
 
     a{
-      color:#333;
+      color:white;
       text-decoration: none;
     }
     .boldme{
