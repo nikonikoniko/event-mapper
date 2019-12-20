@@ -46,16 +46,22 @@ export default class Tags extends Component {
 
 
     return (
-      <div>
-        <h6>{key}</h6>
-        { map((k) =>
+      <div className="container filter tagsfilter">
+        <div className="columns">
+          <div className="col-2">
+            <h6>{key}</h6>
+          </div>
+          <div className="col-10">
+            { map((k) =>
               <button
-                  className={`btn tagbutton ${filters[key] && filters[key].includes(k) ? 'on' : ''}`}
-                  onClick={() => toggleTags(k)}
-                  >
-                  { k }
-                </button>
-              , buttons)}
+                className={`btn tagbutton ${filters[key] && filters[key].includes(k) ? 'on' : ''}`}
+                onClick={() => toggleTags(k)}
+              >
+                { k }
+              </button>
+            , buttons)}
+          </div>
+        </div>
       </div>
     );
   }

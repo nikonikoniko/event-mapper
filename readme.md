@@ -23,6 +23,7 @@ config values that still need to be developped
 use_localstorage // currently just ON
 use_params // currently just ON
 search_fields // which fields to use for search
+locale // or use global locale???
 ```
 
 ### config that is ready to go
