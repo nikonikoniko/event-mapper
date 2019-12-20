@@ -14,7 +14,7 @@ import {
 
 import {
   customFilterConfigs,
-} from '../../../filters';
+} from '../../../../filters';
 
 
 class Tags extends Component {

@@ -9,7 +9,6 @@ import * as L from 'leaflet';
 
 // import Timeline from './CollectionTimelineComponent';
 import config from '../../../config';
-
 const {tilesUrl} = config;
 
 const mapW = map.convert({cap: false});

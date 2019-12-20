@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 
-import CollectionComponent from '../components/CollectionComponent';
+import CollectionComponent from '../components/Collection.jsx';
 
 import {
   updateFilters,

@@ -20,14 +20,11 @@ import {timeMeOut} from '../containers/helpers';
 import {applyFilters} from '../../../filters';
 
 
-// import Filters from './Filters';
-import ListEvent from './ListEvent';
-import Event from './Event';
-
-import CollectionMapComponent from './CollectionMapComponent';
+import ListEvent from './ListEvent.jsx';
+import Event from './Event.jsx';
+import Map from './Map.jsx';
 // import Slider from './CollectionRangeComponent';
-
-import FiltersCustom from './FiltersCustom';
+import FiltersCustom from './filters/FiltersCustom.jsx';
 
 import translator from '../../../translations';
 
@@ -180,7 +177,7 @@ export default class Collection extends Component {
     const ilist = makeEvents(reverse(sort(invisibleEvents)));
 
     const leafletMap = (
-      <CollectionMapComponent
+      <Map
         events={locationEvents}
         visible={this.visible}
         visibleEvents={visibleEvents}
@@ -191,7 +188,7 @@ export default class Collection extends Component {
       />);
 
     const singleMap = (
-      <CollectionMapComponent
+      <Map
         events={[this.props.selectedEvent]}
         visibleEvents={[this.props.selectedEvent]}
         visible={() => {}}
