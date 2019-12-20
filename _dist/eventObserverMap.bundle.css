@@ -1255,23 +1255,23 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   bottom: auto;
   top: 120%; }
 
-.collection {
+.eventObserverMap .collection {
   font-family: "Raleway";
   background-color: #fff; }
-  .collection .btn.on {
+  .eventObserverMap .collection .btn.on {
     background-color: #24a8e0 !important;
     color: white !important;
     border-color: white !important; }
-  .collection .tagbutton {
+  .eventObserverMap .collection .tagbutton {
     font-size: 1.1rem;
     margin-right: 1rem;
     border-color: #E77A91;
     color: #E77A91; }
-    .collection .tagbutton:hover {
+    .eventObserverMap .collection .tagbutton:hover {
       background-color: #E0f0fd; }
-  .collection .card {
+  .eventObserverMap .collection .card {
     opacity: .9; }
-    .collection .card video {
+    .eventObserverMap .collection .card video {
       width: 110%;
       margin: -5px -10px -10px -5px;
       filter: blur(5px);
@@ -1279,30 +1279,30 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
       -moz-filter: blur(5px);
       -o-filter: blur(5px);
       -ms-filter: blur(5px); }
-    .collection .card:hover {
+    .eventObserverMap .collection .card:hover {
       opacity: 1; }
-      .collection .card:hover video {
+      .eventObserverMap .collection .card:hover video {
         filter: blur(1px);
         -webkit-filter: blur(1px);
         -moz-filter: blur(1px);
         -o-filter: blur(1px);
         -ms-filter: blur(1px); }
-    .collection .card .card-header {
+    .eventObserverMap .collection .card .card-header {
       padding-top: 2rem;
       overflow: hidden;
       cursor: pointer; }
-    .collection .card .videodiv {
+    .eventObserverMap .collection .card .videodiv {
       overflow: hidden;
       margin-bottom: 1rem; }
-  .collection .eventsummary {
+  .eventObserverMap .collection .eventsummary {
     word-wrap: break-word;
     white-space: pre-wrap; }
-  .collection .columns {
+  .eventObserverMap .collection .columns {
     padding: 0rem; }
-  .collection .eventcol {
+  .eventObserverMap .collection .eventcol {
     padding: 2rem;
     background-color: white; }
-    .collection .eventcol .lbl {
+    .eventObserverMap .collection .eventcol .lbl {
       background: #24a8e0;
       color: #111;
       padding: .2rem;
@@ -1312,17 +1312,17 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
       padding-right: 1rem;
       font-size: 1rem; }
     @media (max-width: 750px) {
-      .collection .eventcol {
+      .eventObserverMap .collection .eventcol {
         padding: 0rem 2rem; } }
-  .collection .obscol {
+  .eventObserverMap .collection .obscol {
     border-left: 1px solid #efefef;
     background-color: #fefefe; }
-  .collection .obsbutton {
+  .eventObserverMap .collection .obsbutton {
     font-size: 1rem;
     float: right; }
-  .collection .invisibleevents {
+  .eventObserverMap .collection .invisibleevents {
     opacity: .5; }
-  .collection .resultsMeta {
+  .eventObserverMap .collection .resultsMeta {
     padding-top: 1.5rem;
     padding-bottom: 2rem;
     padding-left: 4rem;
@@ -1331,21 +1331,21 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
     font-size: 1rem;
     background-color: rgba(0, 0, 0, 0.1);
     padding: 1rem; }
-    .collection .resultsMeta a {
+    .eventObserverMap .collection .resultsMeta a {
       color: #333;
       text-decoration: none; }
-    .collection .resultsMeta .boldme {
+    .eventObserverMap .collection .resultsMeta .boldme {
       text-decoration: underline;
       font-weight: bold; }
-    .collection .resultsMeta .clickme {
+    .eventObserverMap .collection .resultsMeta .clickme {
       cursor: pointer;
       margin-left: 1rem;
       margin-right: 1rem; }
       @media (max-width: 750px) {
-        .collection .resultsMeta .clickme {
+        .eventObserverMap .collection .resultsMeta .clickme {
           display: block;
           padding: .25rem 0; } }
-  .collection .listevent {
+  .eventObserverMap .collection .listevent {
     padding-right: 1rem;
     border-right: 5px solid transparent;
     border-left: 5px solid transparent;
@@ -1353,9 +1353,9 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
     cursor: pointer;
     position: relative;
     background-color: #fefefe; }
-    .collection .listevent .infocol {
+    .eventObserverMap .collection .listevent .infocol {
       padding: 1rem; }
-    .collection .listevent h5 {
+    .eventObserverMap .collection .listevent h5 {
       font-size: 1.5rem;
       color: black;
       background-color: transparent;
@@ -1363,10 +1363,10 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
       padding-bottom: .2rem;
       padding-top: .1rem; }
       @media (max-width: 750px) {
-        .collection .listevent h5 {
+        .eventObserverMap .collection .listevent h5 {
           font-size: 1.2rem;
           line-height: 1.7; } }
-    .collection .listevent .code {
+    .eventObserverMap .collection .listevent .code {
       color: #111;
       font-size: 1rem;
       line-height: 3rem;
@@ -1374,31 +1374,31 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
       float: right;
       margin-left: 1rem;
       background-color: #24a8e0; }
-    .collection .listevent .metameta small {
+    .eventObserverMap .collection .listevent .metameta small {
       font-family: "Merriweather"; }
     @media (max-width: 750px) {
-      .collection .listevent {
+      .eventObserverMap .collection .listevent {
         padding: 1rem;
         padding-left: 1.6rem; } }
-  .collection .listevent:hover {
+  .eventObserverMap .collection .listevent:hover {
     border-right: 5px solid teal;
     background-color: #E0f0fd; }
-    .collection .listevent:hover .columns {
+    .eventObserverMap .collection .listevent:hover .columns {
       background-color: #E0f0fd; }
-  .collection .mapcol {
+  .eventObserverMap .collection .mapcol {
     height: 100vh;
     position: sticky !important;
     top: 0; }
-  .collection .leaflet-container {
+  .eventObserverMap .collection .leaflet-container {
     height: 100vh; }
-  .collection .collectionsearch {
+  .eventObserverMap .collection .collectionsearch {
     position: sticky !important;
     top: 0;
     z-index: 300; }
     @media (max-width: 750px) {
-      .collection .collectionsearch {
+      .eventObserverMap .collection .collectionsearch {
         position: static !important; } }
-    .collection .collectionsearch input[type=text] {
+    .eventObserverMap .collection .collectionsearch input[type=text] {
       background-color: #fff;
       border-color: #d9d9d9 #ccc #b3b3b3;
       border-radius: 0px;
@@ -1416,16 +1416,16 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
       padding-bottom: 1rem;
       padding-left: 4rem;
       border-bottom: 2px solid #E77A91; }
-      .collection .collectionsearch input[type=text]:focus {
+      .eventObserverMap .collection .collectionsearch input[type=text]:focus {
         background-color: #fff;
         border-bottom: 2px solid #E77A91; }
-      .collection .collectionsearch input[type=text]:hover {
+      .eventObserverMap .collection .collectionsearch input[type=text]:hover {
         background-color: #efefef;
         border-bottom: 2px solid #E77A91; }
       @media (max-width: 750px) {
-        .collection .collectionsearch input[type=text] {
+        .eventObserverMap .collection .collectionsearch input[type=text] {
           padding-left: 1rem; } }
-  .collection .collectionsearch::after {
+  .eventObserverMap .collection .collectionsearch::after {
     content: "\2315";
     position: absolute;
     z-index: 9999999;
@@ -1445,24 +1445,24 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   50% {
     opacity: 0; } }
 
-.container.subheader {
+.eventObserverMap .container.subheader {
   position: sticky !important;
   z-index: 4000;
   background-color: #E77A91;
   color: white; }
   @media (max-width: 750px) {
-    .container.subheader {
+    .eventObserverMap .container.subheader {
       position: static !important; } }
-  .container.subheader a {
+  .eventObserverMap .container.subheader a {
     color: white; }
-  .container.subheader .columns {
+  .eventObserverMap .container.subheader .columns {
     background-color: rgba(0, 0, 0, 0.2);
     margin-top: 0rem;
     margin-bottom: 0rem;
     padding-top: .5rem;
     padding-bottom: .5rem; }
 
-.largeplayicon {
+.eventObserverMap .largeplayicon {
   height: 4rem;
   width: 4rem;
   display: inline-block;
@@ -1475,32 +1475,32 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   margin-left: 1rem;
   opacity: .5; }
 
-.countu {
+.eventObserverMap .countu {
   text-align: right; }
 
-.marker-cluster-small {
+.eventObserverMap .marker-cluster-small {
   background-color: rgba(231, 122, 136, 0.5); }
 
-.marker-cluster-small div {
+.eventObserverMap .marker-cluster-small div {
   background-color: rgba(231, 122, 136, 0.7); }
 
-.marker-cluster-medium {
+.eventObserverMap .marker-cluster-medium {
   background-color: rgba(231, 122, 136, 0.5); }
 
-.marker-cluster-medium div {
+.eventObserverMap .marker-cluster-medium div {
   background-color: rgba(231, 122, 136, 0.7); }
 
-.marker-cluster-large {
+.eventObserverMap .marker-cluster-large {
   background-color: rgba(231, 122, 136, 0.5); }
 
-.marker-cluster-large div {
+.eventObserverMap .marker-cluster-large div {
   background-color: rgba(231, 122, 136, 0.7); }
 
-.marker-cluster span {
+.eventObserverMap .marker-cluster span {
   line-height: 30px;
   color: white; }
 
-.cluhidden {
+.eventObserverMap .cluhidden {
   visibility: hidden; }
-  .cluhidden img {
+  .eventObserverMap .cluhidden img {
     visibility: hidden; }
