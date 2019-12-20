@@ -53,4 +53,5 @@ export {
   updateObservations,
   unsetObservation,
   selectObservation,
+  retrieveUnit,
 };

@@ -1,17 +1,6 @@
 import {
-  merge, set
+  set
 } from 'lodash/fp';
-
-
-const stats = (
-  state = {},
-  {type, payload}
-) => {
-  switch (type) {
-    default:
-      return state;
-  }
-};
 
 const filters = (
   state = {},
@@ -31,6 +20,5 @@ const filters = (
 };
 
 export {
-  filters,
-  stats
+  filters, // eslint-disable-line
 };

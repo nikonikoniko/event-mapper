@@ -27,5 +27,5 @@ const observation = (state = defaultUnit, action) => {
 };
 
 export {
-  observation,
+  observation, // eslint-disable-line
 };

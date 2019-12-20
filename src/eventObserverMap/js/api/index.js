@@ -4,7 +4,7 @@ import sheetsApi from './sheetsApi';
 import {
   testingEventsApi,
   testingObservationsApi,
-} from './testing.js';
+} from './testing';
 
 import config from '../../../config';
 

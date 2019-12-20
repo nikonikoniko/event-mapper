@@ -19,10 +19,10 @@ export default (key) => {
   // make a promise out of tableTop so it can be called with 'then'
   // TODO: handle tabletop error
   const tabletopPromise = () => { // eslint-disable-line
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => { // eslint-disable-line
       Tabletop.init({
         key,
-        callback: (data, tt) => {
+        callback: (data, tt) => { // eslint-disable-line
           resolve(data);
         }
       });
