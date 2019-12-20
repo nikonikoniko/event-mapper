@@ -29,6 +29,8 @@ import Event from './Event';
 import CollectionMapComponent from './CollectionMapComponent';
 // import Slider from './CollectionRangeComponent';
 
+import FiltersCustom from './FiltersCustom';
+
 import translator from '../../../translations';
 
 const mapW = map.convert({cap: false});
@@ -281,7 +283,13 @@ export default class Collection extends Component {
                     { k }
                   </button>
                 , buttons)}
-              </div>
+      </div>
+
+        <FiltersCustom
+          setFilter={console.log}
+          units={events}
+          filters={this.state.filters}
+        />
 
             </div>
 

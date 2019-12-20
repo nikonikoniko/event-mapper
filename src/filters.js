@@ -15,9 +15,9 @@ import {
 
 import appConfig from './config';
 
-const {
+export const {
   events: {
-    filter_fields: customFilters,
+    filter_fields: customFilterConfigs,
   }
 } = appConfig;
 
@@ -43,7 +43,7 @@ const customFilterFunctions =
       pipe(
         map(createFilterFunction),
         mergeAll
-      )(customFilters);
+      )(customFilterConfigs);
 
 export const defaultFiltersFunctions = {
   term:
@@ -88,4 +88,5 @@ export const applyFilters = curry((filters, units) => {
 export default {
   filterFunctions,
   applyFilters,
+  customFilterConfigs,
 };
