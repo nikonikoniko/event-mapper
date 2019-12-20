@@ -72,6 +72,10 @@ export default class Event extends Component {
 
           <h3>{i.id}</h3>
 
+        <p>
+        {i.description}
+      </p>
+
         </div>
         <div className="col-5 eventcol obscol col-sm-12">
           <br />

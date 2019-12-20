@@ -10,6 +10,8 @@ import {
   partial,
   keys,
   identity,
+  get,
+  isEqual,
   pickBy,
 } from 'lodash/fp';
 
@@ -29,14 +31,22 @@ const types = { // depending on the type of filter,
       isEmpty(selectedTagsArray) ?
         units :
         filter(u => !isEmpty(intersection(selectedTagsArray, getOr([], key, u))))(units)
-    )
+    ),
+  select: ({key, _type, _config}) => // eslint-disable-line
+    (term, units) => (
+      isEmpty(term) ?
+        units :
+        filter(u => isEqual(get(key, u), term))(units)
+    ),
+
 };
 
 const createFilterFunction = ({key, type, config}) => {
   console.log(key, type, config);
-  return ({
+  const filterType = get(type, types);
+  return filterType ? ({
     [key]: types[type]({key, type, config})
-  });
+  }) : {};
 };
 
 const customFilterFunctions =

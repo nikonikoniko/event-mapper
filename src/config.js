@@ -19,9 +19,16 @@ const defaults = {
         key: 'tags',
         type: 'tagsFilter',
         config: {
+          max: 100
+        }
+      },
+      {
+        key: 'severity',
+        type: 'select',
+        config: {
           max: 8
         }
-      }
+      },
     ]
   },
   observations: {
