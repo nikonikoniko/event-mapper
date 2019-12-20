@@ -3,19 +3,20 @@ import {
   map,
 } from 'lodash/fp';
 
+import translator from '../../../../translations';
 import {
   customFilterConfigs,
 } from '../../../../filters';
 
+import Slider from '../Range.jsx';
+
 import Tags from './types/TagsFilter.jsx';
 import Select from './types/Select.jsx';
-
 
 const components = {
   tagsFilter: Tags,
   select: Select,
 };
-
 
 export default class FiltersCustom extends Component { // eslint-disable-line
   render() {
@@ -23,6 +24,8 @@ export default class FiltersCustom extends Component { // eslint-disable-line
       setFilter,
       units,
       filters,
+      updateRange,
+      onSearchChange,
     } = this.props;
 
     const createComponentByType = f => {
@@ -39,9 +42,20 @@ export default class FiltersCustom extends Component { // eslint-disable-line
     };
 
     return (
-      <div>
-      {map(createComponentByType, customFilterConfigs)}
-      </div>
+      <span>
+        <div className="collectionsearch">
+          <input
+            placeholder={translator('Type to Search...')}
+            id="searchbox"
+            type="text"
+            onChange={onSearchChange}
+          />
+        </div>
+        <div className="filters">
+          <Slider updateRange={updateRange} />
+          {map(createComponentByType, customFilterConfigs)}
+        </div>
+      </span>
     );
   }
 

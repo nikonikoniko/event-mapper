@@ -4,8 +4,6 @@ import {
   size,
   concat,
   isEmpty,
-  sortBy,
-  reverse,
   pipe,
 } from 'lodash/fp';
 import moment from 'moment';
@@ -19,7 +17,6 @@ import {applyFilters} from '../../../filters';
 import ListEvent from './ListEvent.jsx';
 import Event from './Event.jsx';
 import Map from './Map.jsx';
-import Slider from './Range.jsx';
 import FiltersCustom from './filters/FiltersCustom.jsx';
 
 import translator from '../../../translations';
@@ -39,11 +36,9 @@ const mapW = map.convert({cap: false});
 export default class Collection extends Component {
   constructor(props) {
     super(props);
-    this.typing = this.typing.bind(this);
     this.search = this.search.bind(this);
     this.visible = this.visible.bind(this);
     this.hover = this.hover.bind(this);
-    this.setSort = this.setSort.bind(this);
     this.range = this.range.bind(this);
     this.setFilter = this.setFilter.bind(this);
 
@@ -55,7 +50,6 @@ export default class Collection extends Component {
       hoverUnit: false,
       range: [moment('2013-01-01').valueOf(), moment().valueOf()],
       visibleMarkers: [],
-      sort: params.filters.term || this.props.filters.term ? 'relevance' : 'observationcount'
     };
   }
 
@@ -72,27 +66,17 @@ export default class Collection extends Component {
     document.getElementById('searchbox').value = params.filters.term || null;
   }
 
-  setSort(field) {
-    this.setState({sort: field});
-  }
-
   setFilter(f) {
-    console.log('setting filter', f);
     this.props.update(f);
   }
 
-
   search(e) {
-    // this.setState({typing: true, sort: 'relevance'});
+    this.setState({typing: true});
     const term = e.target.value;
     timeMeOut(() => {
-      this.props.update({term});
+      this.setFilter({term});
       this.setState({typing: false});
     });
-  }
-
-  typing(b) {
-    this.setState({typing: b});
   }
 
   visible(codes) {
@@ -142,14 +126,12 @@ export default class Collection extends Component {
 
     const events = applyFilters(filters)(allEvents);
 
-    // const locationEvents = filter(i => i.latitude && i.longitude, events);
-    const locationEvents = haveLocation(events);
-    // const nolocationEvents = filter(i => !i.latitude && !i.longitude, events);
-    const nolocationEvents = noHaveLocation(events);
+    const eventsWithLocation = haveLocation(events);
+    const eventsWithoutLocation = noHaveLocation(events);
 
     const visiblebymap = size(visible) > 0 ?
           intersectionById(events, visible)
-          : locationEvents;
+          : eventsWithLocation;
 
     const visibleEvents = dateIncludedP(events) ?
         filterByRange([startDate, endDate], visiblebymap)
@@ -158,47 +140,32 @@ export default class Collection extends Component {
     const invisibleEvents = size(visible) > 0 ?
           pipe(
             () => xorById(events, visible),
-            concat(nolocationEvents),
+            concat(eventsWithoutLocation),
             uniqById
-          )(null) // uniqById(concat(xorById(events, visible), nolocationEvents))
-          : nolocationEvents;
+          )(null) // uniqById(concat(xorById(events, visible), eventsWithoutLocation))
+          : eventsWithoutLocation;
 
-    const makeEvents = (is) => mapW((i, k) =>
-                                      <div // eslint-disable-line
-                                        onMouseEnter={() => this.hover(i)}
-                                        onMouseLeave={() => this.hover(false)}
-                                      >
-                                        <ListEvent
-                                          event={i}
-                                          selector={() => this.props.selectEvent(i)}
-                                          num={k}
-                                        />
-                                      </div>
-                                      , is);
+    const listEvent = (e, key) => (
+      <div
+        onMouseEnter={() => this.hover(e)}
+        onMouseLeave={() => this.hover(false)}
+      >
+        <ListEvent
+          event={e}
+          selector={() => this.props.selectEvent(e)}
+          num={key}
+        />
+      </div>
+    );
 
-    const sort = (l) => {
-      const by = this.state.sort;
-      if (isEmpty(by)) { return l; }
-      if (by === 'relevance') {
-        return reverse(l);
-      }
-      if (by === 'observationcount') {
-        return sortBy(i => size(i.units), l);
-      }
-      if (by === 'date') {
-        return sortBy('date', l);
-      }
-      if (by === 'confidence') {
-        return sortBy('confidence', l);
-      }
-    };
+    const listEvents = mapW(listEvent);
 
-    const vlist = makeEvents(reverse(sort(visibleEvents)));
-    const ilist = makeEvents(reverse(sort(invisibleEvents)));
+    const eventsOnMap = listEvents(visibleEvents);
+    const eventsOffMap = listEvents(invisibleEvents);
 
-    const leafletMap = (
+    const fullMap = (
       <Map
-        events={locationEvents}
+        events={eventsWithLocation}
         visible={this.visible}
         visibleEvents={visibleEvents}
         hoverUnit={this.state.hoverUnit}
@@ -240,11 +207,6 @@ export default class Collection extends Component {
       );
     }
 
-    const slider = (
-      <Slider
-        updateRange={this.range}
-      />);
-
     return (
       <div className="container collection">
         <div className="columns">
@@ -252,36 +214,30 @@ export default class Collection extends Component {
             className="col-6 col-sm-12 scrolltome"
             id="eventlist"
           >
-            <div className="collectionsearch">
-              <input placeholder={translator('Type to Search...')} id="searchbox" type="text" onChange={this.search} />
-            </div>
-
-
-            <div className="filters">
-              {slider}
-              <FiltersCustom
-                setFilter={this.setFilter}
-                units={this.props.events}
-                filters={this.props.filters}
-              />
-            </div>
+            <FiltersCustom
+              updateRange={this.range}
+              onSearchChange={this.search}
+              setFilter={this.setFilter}
+              units={this.props.events}
+              filters={this.props.filters}
+            />
 
 
             <div className="resultsMeta">
               <span>
                 <i className="fa fa-map-marker" />
                 <a href="#onmap">
-                  {` ${size(vlist)} ${translator('results on map')}`}
+                  {` ${size(eventsOnMap)} ${translator('results on map')}`}
                 </a>
                 <a href="#offmap">
-                  {size(ilist) > 0 ? ` / ${size(ilist)} ${translator('off map')} ` : ' '}
+                  {size(eventsOffMap) > 0 ? ` / ${size(eventsOffMap)} ${translator('off map')} ` : ' '}
                 </a>
               </span>
             </div>
 
 
             <div id="onnmap" className="visibleevents" style={updating ? {opacity: '.3'} : {}}>
-              {vlist}
+              {eventsOnMap}
             </div>
             <div style={{textAlign: 'center', color: '#aaa', padding: '3rem'}} >
               <div>▲</div>
@@ -289,12 +245,13 @@ export default class Collection extends Component {
               <div>{translator('Off Map')}</div>
               <div>▼</div>
             </div>
+
             <div id="offmap" className="invisibleevents" style={updating ? {opacity: '.3'} : {}}>
-              {ilist}
+              {eventsOffMap}
             </div>
           </div>
           <div className="col-6 col-sm-12" style={updating ? {opacity: '.3'} : {}}>
-            {leafletMap}
+            {fullMap}
           </div>
         </div>
 
